@@ -1,0 +1,8 @@
+@media (min-width: 992px) {
+    .m-t-30{
+        margin-top: 30px;
+    }
+}
+.bg-pink{
+    background: deeppink !important;
+}
