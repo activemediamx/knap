@@ -97,7 +97,7 @@ class CustomFieldsController extends UserBaseController
         \DB::beginTransaction();
         $user = new User();
         $groupID = \DB::table('custom_field_groups')
-            ->where('model', 'App\Models\User')
+            ->where('model', \App\Models\User::class)
             ->select('id')
             ->first()->id;
 

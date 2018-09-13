@@ -21,7 +21,7 @@ class CreateCustomFieldsTable extends Migration
         });
 
         DB::table('custom_field_groups')->insert([
-            'name' => 'User', 'model' => 'App\Models\User'
+            'name' => 'User', 'model' => \App\Models\User::class
         ]);
 
         Schema::create('custom_fields', function (Blueprint $table) {
