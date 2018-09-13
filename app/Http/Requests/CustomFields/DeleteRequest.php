@@ -15,7 +15,8 @@ class DeleteRequest extends FormRequest
     public function authorize()
     {
         $user = $this->user();
-        return $user->can('manage-custom-fields');;
+        return $user->can('manage-custom-fields');
+        ;
     }
 
     /**
@@ -29,5 +30,4 @@ class DeleteRequest extends FormRequest
 
         ];
     }
-
 }

@@ -38,7 +38,5 @@ class StoreRequest extends CoreRequest
         return [
             'permission.required' => 'Select atleast one permission'
         ];
-
     }
-
 }

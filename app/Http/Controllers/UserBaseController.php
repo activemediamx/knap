@@ -8,32 +8,32 @@ class UserBaseController extends Controller
 {
 
     /**
-	 * @var array
-	 */
+     * @var array
+     */
     public $data = [];
 
     /**
-	 * @param $name
-	 * @param $value
-	 */
+     * @param $name
+     * @param $value
+     */
     public function __set($name, $value)
     {
         $this->data[$name] = $value;
     }
 
      /**
-	 * @param $name
-	 * @return mixed
-	 */
+     * @param $name
+     * @return mixed
+     */
     public function __get($name)
     {
         return $this->data[$name];
     }
 
      /**
-	 * @param $name
-	 * @return bool
-	 */
+     * @param $name
+     * @return bool
+     */
     public function __isset($name)
     {
         return isset($this->data[ $name ]);
@@ -59,5 +59,4 @@ class UserBaseController extends Controller
 
         \App::setLocale($this->global->locale);
     }
-
 }

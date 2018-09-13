@@ -25,10 +25,10 @@ class StoreRequest extends CoreRequest
      */
     public function rules()
     {
-        \Validator::extend('not_custom_fields', function($attribute, $value, $parameters, $validator) {
+        \Validator::extend('not_custom_fields', function ($attribute, $value, $parameters, $validator) {
             $userColumns = \Schema::getColumnListing('users');
 
-            if(!in_array($this->get('label'), $userColumns)){
+            if (!in_array($this->get('label'), $userColumns)) {
                 return true;
             }
 
@@ -42,5 +42,4 @@ class StoreRequest extends CoreRequest
             'type'      => 'required'
         ];
     }
-
 }

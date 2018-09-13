@@ -48,7 +48,6 @@ class SettingController extends UserBaseController
 
             $setting->save();
             return Reply::redirect(route('general-settings'), trans('messages.updateSuccess'));
-
         } elseif ($request->setting == 'social') {
             $setting->facebook_client_id     = $request->facebook_client_id;
             $setting->facebook_client_secret = $request->facebook_client_secret;
@@ -61,12 +60,11 @@ class SettingController extends UserBaseController
             $setting->save();
 
             return Reply::success('messages.updateSuccess');
-
         } elseif ($request->setting == 'theme') {
             $theme = $request->theme;
             $themeArray = explode(':', $request->theme);
 
-            if(isset($themeArray[1])){
+            if (isset($themeArray[1])) {
                 $theme                = $themeArray[0];
                 $setting->theme_color = $themeArray[1];
             }
@@ -76,9 +74,7 @@ class SettingController extends UserBaseController
             $setting->save();
 
             return Reply::redirect(route('theme-settings'), trans('messages.themeChangeMessage'));
-
         } elseif ($request->setting == 'settings') {
-
             $setting->email_notification       = $request->emailNotification;
             $setting->recaptcha                = $request->recaptcha;
             $setting->remember_me              = $request->rememberMe;
@@ -89,9 +85,7 @@ class SettingController extends UserBaseController
             $setting->save();
 
             return Reply::success('messages.updateSuccess');
-
         } elseif ($request->setting == 'mail') {
-
             $setting->mail_driver     = $request->mailDriver;
             $setting->mail_host       = $request->mailHost;
             $setting->mail_port       = $request->mailPort;
@@ -102,8 +96,6 @@ class SettingController extends UserBaseController
 
             return Reply::success('messages.updateSuccess');
         }
-
-
     }
 
     /**
@@ -147,5 +139,4 @@ class SettingController extends UserBaseController
         $this->pageTitle = trans('menu.mailSettings');
         return View::make($this->global->theme_folder.'.settings.mail_setting', $this->data);
     }
-
 }

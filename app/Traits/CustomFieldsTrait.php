@@ -44,7 +44,6 @@ trait CustomFieldsTrait
 
             if (isset($field['required']) && ((strtolower($field['required']) == 'yes' || strtolower($field['required']) == 'on' || $field['required'] == 1))) {
                 $insertData['required'] = 'yes';
-                
             } else {
                 $insertData['required'] = 'no';
             }
@@ -53,7 +52,6 @@ trait CustomFieldsTrait
             if (isset($field['value'])) {
                 if (is_array($field['value'])) {
                     $insertData['value'] = \GuzzleHttp\json_encode($field['value']);
-                    
                 } else {
                     $insertData['value'] = $field['value'];
                 }
@@ -80,7 +78,6 @@ trait CustomFieldsTrait
 
             if (isset($field['required']) && ((strtolower($field['required']) == 'yes' || strtolower($field['required']) == 'on' || $field['required'] == 1))) {
                 $insertData['required'] = 'yes';
-
             } else {
                 $insertData['required'] = 'no';
             }
@@ -89,7 +86,6 @@ trait CustomFieldsTrait
             if (isset($field['values'])) {
                 if (is_array($field['values'])) {
                     $insertData['values'] = \GuzzleHttp\json_encode($field['values']);
-
                 } else {
                     $insertData['values'] = $field['values'];
                 }
@@ -116,7 +112,6 @@ trait CustomFieldsTrait
 
             if (isset($field['required']) && ((strtolower($field['required']) == 'yes' || strtolower($field['required']) == 'on' || $field['required'] == 1))) {
                 $insertData['required'] = 'yes';
-
             } else {
                 $insertData['required'] = 'no';
             }
@@ -125,7 +120,6 @@ trait CustomFieldsTrait
             if (isset($field['value'])) {
                 if (is_array($field['value'])) {
                     $insertData['values'] = \GuzzleHttp\json_encode($field['value']);
-
                 } else {
                     $insertData['values'] = $field['value'];
                 }
@@ -157,7 +151,6 @@ trait CustomFieldsTrait
 
         // Add Custom Fields for this group
         foreach ($group['fields'] as $field) {
-
             $insertData = ['custom_field_group_id' => $field['groupID'],
                            'label'                 => $field['label'],
                            'name'                  => $field['name'],
@@ -166,7 +159,6 @@ trait CustomFieldsTrait
 
             if (isset($field['required']) && ((strtolower($field['required']) == 'yes' || strtolower($field['required']) == 'on' || $field['required'] == 1))) {
                 $insertData['required'] = 'yes';
-                
             } else {
                 $insertData['required'] = 'no';
             }
@@ -175,7 +167,6 @@ trait CustomFieldsTrait
             if (isset($field['value'])) {
                 if (is_array($field['value'])) {
                     $insertData['values'] = \GuzzleHttp\json_encode($field['value']);
-
                 } else {
                     $insertData['values'] = $field['value'];
                 }
@@ -185,7 +176,6 @@ trait CustomFieldsTrait
                 // Custom field exists, update
                 \DB::table('custom_fields')->update($insertData);
                 $foundCustomFields[] = $field['id'];
-                
             } else {
                 $foundCustomFields[] = \DB::table('custom_fields')->insertGetId($insertData);
             }
@@ -221,7 +211,6 @@ trait CustomFieldsTrait
 
             $group->fields = $customFields;
             $fields[]      = $group;
-
         }
 
         return $fields[0];
@@ -251,12 +240,10 @@ trait CustomFieldsTrait
                 $item->value = ($item->value == '1') ? true : false;
 
                 return $item;
-                
             } else if ($item->type == 'number') {
                 $item->value = ($item->value * 1);
 
                 return $item;
-                
             } else {
                 return $item;
             }
@@ -287,7 +274,6 @@ trait CustomFieldsTrait
                     ->where('model_id', $this->id)
                     ->where('custom_field_id', $id)
                     ->update(['value' => $value]);
-                
             } else {
                 \DB::table('custom_fields_data')
                     ->insert(['model'           => $this->getModelName(),

@@ -61,5 +61,4 @@ If the button above does not work, try copying and pasting the URL into your bro
         ));
         \DB::commit();
     }
-
 }

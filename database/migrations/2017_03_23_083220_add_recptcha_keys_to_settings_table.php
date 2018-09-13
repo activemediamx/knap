@@ -32,5 +32,4 @@ class AddRecptchaKeysToSettingsTable extends Migration
             $table->dropColumn('recaptcha_private_key');
         });
     }
-
 }

@@ -56,7 +56,6 @@ class FileManager
 
         if ($this->storage == 's3') {
             $this->removeFileFromS3($link);
-
         } else {
             $link = str_replace(url('/') . '/', '', $link);
             unlink($link);
@@ -75,7 +74,7 @@ class FileManager
      * @param null $storage
      * @return string
      */
-    public function uploadImageFileFromBase64String($fileRequestObj, $filePath,$storage = null)
+    public function uploadImageFileFromBase64String($fileRequestObj, $filePath, $storage = null)
     {
         // check and set filename
         $fileName = uniqid();
@@ -107,13 +106,13 @@ class FileManager
         $ext = '.jpg';
 
         switch (exif_imagetype($fileRequest)) {
-        case 1:
-            $ext = '.gif';
-            break;
+            case 1:
+                $ext = '.gif';
+                break;
 
-        case 3:
-            $ext = '.png';
-            break;
+            case 3:
+                $ext = '.png';
+                break;
         }
 
         return $ext;
@@ -127,17 +126,16 @@ class FileManager
         }
 
         switch ($string) {
-        case 'file':
-            $this->storage = 'file';
-            break;
+            case 'file':
+                $this->storage = 'file';
+                break;
 
-        case 's3':
-            $this->storage = 's3';
-            break;
+            case 's3':
+                $this->storage = 's3';
+                break;
 
-        default:
-            abort(500, 'This storage is not supported.');
-
+            default:
+                abort(500, 'This storage is not supported.');
         }
     }
 
@@ -208,7 +206,5 @@ class FileManager
         }
 
         return $fileName . $ext;
-
     }
-
 }

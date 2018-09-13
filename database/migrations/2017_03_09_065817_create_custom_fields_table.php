@@ -13,8 +13,7 @@ class CreateCustomFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('custom_field_groups', function(Blueprint $table)
-        {
+        Schema::create('custom_field_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('model')->nullable();
@@ -25,8 +24,7 @@ class CreateCustomFieldsTable extends Migration
             'name' => 'User', 'model' => 'App\Models\User'
         ]);
 
-        Schema::create('custom_fields', function(Blueprint $table)
-        {
+        Schema::create('custom_fields', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('custom_field_group_id')->unsigned()->nullable();
             $table->foreign('custom_field_group_id')->references('id')->on('custom_field_groups')
@@ -50,5 +48,4 @@ class CreateCustomFieldsTable extends Migration
         Schema::drop('custom_fields');
         Schema::drop('custom_field_groups');
     }
-
 }

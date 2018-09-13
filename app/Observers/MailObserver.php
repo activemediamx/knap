@@ -16,13 +16,11 @@ class MailObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->mail = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->mail = 'Seeder';
         }
-
     }
 
     public function updated(Setting $setting)

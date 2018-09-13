@@ -29,5 +29,4 @@ class ForgetPasswordRequest extends CoreRequest
             'email'     => 'required|email|exists:users'
         ];
     }
-
 }

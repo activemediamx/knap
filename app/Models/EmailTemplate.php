@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Models;;
+namespace App\Models;
+
+;
 
 use Config;
 use Illuminate\Database\Eloquent\Model;
@@ -33,10 +35,9 @@ class EmailTemplate extends Model implements LogsActivityInterface
     {
         $variables = EmailTemplate::where('email_id', $emailId)->first()->variables;
         return $variables;
-
     }
 
-    public static function prepareAndSendEmail($emailId,$emailInfo,$fieldValues, $throw = false)
+    public static function prepareAndSendEmail($emailId, $emailInfo, $fieldValues, $throw = false)
     {
 
         $template  = EmailTemplate::getEmailTemplate($emailId);
@@ -50,7 +51,6 @@ class EmailTemplate extends Model implements LogsActivityInterface
         self::setSmtpSettings();
 
         try {
-
             \Mail::send('emails.layout', [
                 'body'     => nl2br($emailText),
                 'setting' => $setting,
@@ -69,7 +69,6 @@ class EmailTemplate extends Model implements LogsActivityInterface
                 return 'Mail not sent Due to Connection Problem';
             }
         }
-
     }
 
     public static function setSmtpSettings()
@@ -91,19 +90,16 @@ class EmailTemplate extends Model implements LogsActivityInterface
      */
     public function getActivityDescriptionForEvent($eventName)
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->emailTemplate = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->emailTemplate = 'Seeder';
         }
 
-        if ($eventName == 'updated')
-        {
+        if ($eventName == 'updated') {
             return $this->emailTemplate.' updated email template <strong>'.$this->email_id.'</strong> successfully';
         }
 
         return '';
     }
-
 }

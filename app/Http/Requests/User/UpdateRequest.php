@@ -53,5 +53,4 @@ class UpdateRequest extends CoreRequest
 
         return $customRules;
     }
-
 }

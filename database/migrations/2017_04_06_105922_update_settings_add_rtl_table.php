@@ -30,5 +30,4 @@ class UpdateSettingsAddRtlTable extends Migration
             //
         });
     }
-
 }

@@ -33,11 +33,9 @@ class UsersTableSeeder extends Seeder
         ]);
 
         if (env('APP_ENV') !== 'codecanyon') {
-
             factory(User::class, 40)->create();
         }
 
         \DB::commit();
     }
-
 }

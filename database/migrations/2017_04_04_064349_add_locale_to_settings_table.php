@@ -30,5 +30,4 @@ class AddLocaleToSettingsTable extends Migration
             $table->dropColumn('locale');
         });
     }
-
 }

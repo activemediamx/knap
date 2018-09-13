@@ -29,5 +29,4 @@ class ExportCsvRequest extends FormRequest
 
         ];
     }
-
 }

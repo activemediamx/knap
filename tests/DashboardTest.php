@@ -8,18 +8,15 @@ class DashboardTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('view-dashboard')){
+        if ($user->can('view-dashboard')) {
             $this->assertTrue($user->can('view-dashboard'));
             $this->actingAs($user)
                 ->get(route('dashboard.index'))
                 ->assertDontSee('Whoops')
                 ->assertSee('user')
                 ->assertDontSee('Sorry');
-
-        }else{
+        } else {
             $this->assertFalse($user->can('view-dashboard'));
         }
-
     }
-
 }

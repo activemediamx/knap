@@ -16,13 +16,11 @@ class SocialObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->social = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->social = 'Seeder';
         }
-
     }
 
     public function updated(Setting $setting)

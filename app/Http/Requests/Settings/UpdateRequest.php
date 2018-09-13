@@ -16,22 +16,17 @@ class UpdateRequest extends CoreRequest
     {
         $user = $this->user();
 
-        if($this->get('setting') == 'general') {
+        if ($this->get('setting') == 'general') {
             return $user->can('update-general-settings');
-        }
-        elseif ($this->get('setting') == 'theme') {
+        } elseif ($this->get('setting') == 'theme') {
             return $user->can('update-theme-settings');
-        }
-        elseif ($this->get('setting') == 'social') {
+        } elseif ($this->get('setting') == 'social') {
             return $user->can('update-social-settings');
-        }
-        elseif ($this->get('setting') == 'settings') {
+        } elseif ($this->get('setting') == 'settings') {
             return $user->can('update-common-settings');
-        }
-        elseif ($this->get('setting') == 'mail') {
+        } elseif ($this->get('setting') == 'mail') {
             return $user->can('update-mail-settings');
         }
-
     }
 
     /**
@@ -41,28 +36,24 @@ class UpdateRequest extends CoreRequest
      */
     public function rules()
     {
-        if($this->get('setting') == 'general') {
+        if ($this->get('setting') == 'general') {
             return [
                 'site_name'         => 'required',
                 'image'        => 'image'
             ];
-        }
-        elseif ($this->get('setting') == 'theme') {
+        } elseif ($this->get('setting') == 'theme') {
             return [
                 'theme'         => 'required'
             ];
-        }
-        elseif ($this->get('setting') == 'social') {
+        } elseif ($this->get('setting') == 'social') {
             return [
                 // Provide rules here
             ];
-        }
-        elseif ($this->get('setting') == 'settings') {
+        } elseif ($this->get('setting') == 'settings') {
             return [
                 // Provide rules here
             ];
-        }
-        elseif ($this->get('setting') == 'mail') {
+        } elseif ($this->get('setting') == 'mail') {
             return [
                     'mailDriver'    => 'required',
                     'mailHost'      => 'required',
@@ -71,5 +62,4 @@ class UpdateRequest extends CoreRequest
             ];
         }
     }
-
 }

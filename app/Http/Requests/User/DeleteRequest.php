@@ -29,5 +29,4 @@ class DeleteRequest extends FormRequest
 
         ];
     }
-
 }

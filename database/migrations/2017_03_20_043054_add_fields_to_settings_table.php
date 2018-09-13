@@ -54,5 +54,4 @@ class AddFieldsToSettingsTable extends Migration
             $table->dropColumn('mail_encryption');
         });
     }
-
 }

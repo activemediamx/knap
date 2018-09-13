@@ -16,13 +16,11 @@ class ThemeObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->theme = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->theme = 'Seeder';
         }
-
     }
 
     public function updated(Setting $setting)

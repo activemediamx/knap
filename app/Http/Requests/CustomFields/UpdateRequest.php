@@ -31,5 +31,4 @@ class UpdateRequest extends CoreRequest
             'type'      => 'required'
         ];
     }
-
 }

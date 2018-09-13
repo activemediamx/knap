@@ -29,7 +29,6 @@ class EmailTemplateController extends UserBaseController
     public function index(IndexRequest $request)
     {
         return \View::make($this->global->theme_folder.'.email-templates.index', $this->data);
-
     }
 
     /**
@@ -42,7 +41,7 @@ class EmailTemplateController extends UserBaseController
         $data = Datatables::of($emailTemplate)
             ->addColumn(
                 'action',
-                function($row) {
+                function ($row) {
                     // Edit Button
                     $class = $this->global->theme_folder == 'admin-lte' ? 'bg-' : '';
                     $string = '<a style="margin: 1px;" href="javascript:;" onclick="knap.editModal(\'email-templates\','.$row->id.')" class="btn btn-sm btn-info '.$class.'purple"><i class="fa fa-edit"></i> Edit</a> ';
@@ -52,7 +51,6 @@ class EmailTemplateController extends UserBaseController
             ->removeColumn('id')
             ->make(true);
         return $data;
-
     }
 
     /**
@@ -85,5 +83,4 @@ class EmailTemplateController extends UserBaseController
 
         return Reply::success('messages.updateSuccess');
     }
-
 }

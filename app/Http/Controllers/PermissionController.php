@@ -70,7 +70,7 @@ class PermissionController extends UserBaseController
         $data = Datatables::of($permissions)
             ->addColumn(
                 'action',
-                function($row) {
+                function ($row) {
                     // Edit Button
                     $class = $this->global->theme_folder == 'admin-lte' ? 'bg-' : '';
                     $string = '<a style="margin: 1px;" href="javascript:;" onclick="knap.editModal(\'permissions\','.$row->id.')" class="btn  btn-info margin-top-10 btn-sm  '.$class.'purple"><i class="fa fa-edit"></i> Edit</a> ';
@@ -165,5 +165,4 @@ class PermissionController extends UserBaseController
         $permissions->description   = $request->get('description');
         $permissions->save();
     }
-
 }

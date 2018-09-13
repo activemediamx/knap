@@ -30,5 +30,4 @@ class ChangePasswordRequest extends CoreRequest
             'password_confirmation' => 'required',
         ];
     }
-
 }

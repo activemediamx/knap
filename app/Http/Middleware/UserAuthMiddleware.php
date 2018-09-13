@@ -18,11 +18,10 @@ class UserAuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()){
+        if (!Auth::check()) {
             return Redirect::route('user.login');
         }
 
         return $next($request);
     }
-
 }

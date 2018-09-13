@@ -16,7 +16,6 @@ class IndexRequest extends FormRequest
     {
         $user = $this->user();
         return $user->can('update-'.$this->route()->uri);
-
     }
 
     /**
@@ -30,5 +29,4 @@ class IndexRequest extends FormRequest
 
         ];
     }
-
 }

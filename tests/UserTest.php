@@ -9,7 +9,7 @@ class UserTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('view-users')) {
+        if ($user->can('view-users')) {
             $this->actingAs($user)
                 ->get(route('users.index'))
                 ->assertDontSee('Whoops')
@@ -22,7 +22,7 @@ class UserTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('add-user')) {
+        if ($user->can('add-user')) {
             $this->actingAs($user)
                 ->get(route('users.create'))
                 ->assertDontSee('Whoops')
@@ -30,7 +30,8 @@ class UserTest extends TestCase
                 ->assertDontSee('Sorry');
             // Missing fields
             $this->actingAs($user)
-                ->post(route('users.store'),
+                ->post(
+                    route('users.store'),
                     ['name'     => '',
                      'email'    => '',
                      'password' => '',
@@ -39,13 +40,15 @@ class UserTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
             // Some field filled
             $this->actingAs($user)
-                ->post(route('users.store'),
+                ->post(
+                    route('users.store'),
                     ['name'     => '',
                      'email'    => 'test@test.com',
                      'password' => '1122323',
@@ -54,13 +57,15 @@ class UserTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
             // Some field filled
             $this->actingAs($user)
-                ->post(route('users.store'),
+                ->post(
+                    route('users.store'),
                     ['name'     => 'new',
                      'email'    => 'test1@test.com',
                      'password' => '1122323',
@@ -69,18 +74,18 @@ class UserTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('success');
         }
-
     }
 
     public function testUserEdit()
     {
         $user = $this->user();
 
-        if($user->can('edit-user')) {
+        if ($user->can('edit-user')) {
             $this->actingAs($user)
                 ->get(route('users.edit', $user->id))
                 ->assertDontSee('Whoops')
@@ -89,7 +94,8 @@ class UserTest extends TestCase
             // Missing fields
 
             $this->actingAs($user)
-                ->put(route('users.update', $user->id),
+                ->put(
+                    route('users.update', $user->id),
                     ['name'     => '',
                      'email'    => '',
                      'password' => '',
@@ -98,13 +104,15 @@ class UserTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
             // Some field filled
             $this->actingAs($user)
-                ->put(route('users.update', $user->id),
+                ->put(
+                    route('users.update', $user->id),
                     ['name'     => '',
                      'email'    => 'test@test.com',
                      'password' => '1122323',
@@ -113,13 +121,15 @@ class UserTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
             // Some field filled
             $this->actingAs($user)
-                ->put(route('users.update', $user->id),
+                ->put(
+                    route('users.update', $user->id),
                     ['id'       => $user->id,
                      'name'     => 'new',
                      'email'    => 'test1@test.com',
@@ -130,32 +140,31 @@ class UserTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('success');
         }
-
     }
 
     public function testUserDelete()
     {
         $user = $this->user();
 
-        if($user->can('delete-user')) {
+        if ($user->can('delete-user')) {
             // Missing fields
             $this->actingAs($user)
-                ->delete(route('users.destroy', $user->id),
+                ->delete(
+                    route('users.destroy', $user->id),
                     [
 
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('success');
         }
-
-
     }
-
 }

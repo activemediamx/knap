@@ -32,5 +32,4 @@ class UpdateRequest extends CoreRequest
             'description'  => 'required'
         ];
     }
-
 }

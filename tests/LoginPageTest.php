@@ -20,7 +20,8 @@ class LoginPageTest extends TestCase
 
         // Input Field Blank
         $postUrl = route('user.login_check');
-        $this->post($postUrl,
+        $this->post(
+            $postUrl,
             [
                 'email'    => '',
                 'password' => '',
@@ -28,31 +29,35 @@ class LoginPageTest extends TestCase
             ],
             [
                 'X-Requested-With' => 'XMLHttpRequest'
-            ])
+            ]
+        )
             ->assertDontSee('Whoops')
             ->assertSee('fail');
 
 
         // Wrong Login Details
-        $this->post($postUrl,
+        $this->post(
+            $postUrl,
             [
                 'email'    => 'ajaysdfadfsafd',
                 'password' => '123456',
             ],
-            ['X-Requested-With' => 'XMLHttpRequest'])
+            ['X-Requested-With' => 'XMLHttpRequest']
+        )
             ->assertDontSee('success')
             ->assertDontSee('Whoops')
             ->assertDontSee('Sorry');
 
-        $this->post($postUrl,
+        $this->post(
+            $postUrl,
             [
                 'email'    => $this->user()->email,
                 'password' => '123456',
             ],
-            ['X-Requested-With' => 'XMLHttpRequest'])
+            ['X-Requested-With' => 'XMLHttpRequest']
+        )
             ->assertDontSee('Whoops')
             ->assertSee('success')
             ->assertDontSee('Sorry');
     }
-
 }

@@ -9,7 +9,7 @@ class PermissionTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('view-permission')) {
+        if ($user->can('view-permission')) {
             $this->actingAs($user)
                 ->get(route('permissions.index'))
                 ->assertDontSee('Whoops')
@@ -22,7 +22,7 @@ class PermissionTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('edit-permission')) {
+        if ($user->can('edit-permission')) {
             $this->actingAs($user)
                 ->get(route('permissions.edit', $this->permission()->id))
                 ->assertDontSee('Whoops')
@@ -32,7 +32,8 @@ class PermissionTest extends TestCase
 
             // Missing fields
             $this->actingAs($user)
-                ->put(route('permissions.update', $user->id),
+                ->put(
+                    route('permissions.update', $user->id),
                     [
                         'name'         => '',
                         'display_name' => '',
@@ -40,13 +41,15 @@ class PermissionTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
             // Some field filled
             $this->actingAs($user)
-                ->put(route('permissions.update', $user->id),
+                ->put(
+                    route('permissions.update', $user->id),
                     [
                         'name'         => $this->permission()->name,
                         'display_name' => '',
@@ -54,14 +57,16 @@ class PermissionTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
 
             // Some field filled
             $this->actingAs($user)
-                ->put(route('permissions.update', $this->permission()->id),
+                ->put(
+                    route('permissions.update', $this->permission()->id),
                     [
                         'name'         => 'Test',
                         'display_name' => 'Test',
@@ -69,11 +74,11 @@ class PermissionTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('success');
         }
-
     }
 
     // Destroy role
@@ -82,19 +87,19 @@ class PermissionTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('delete-permission')) {
+        if ($user->can('delete-permission')) {
             // Missing fields
             $this->actingAs($user)
-                ->delete(route('permissions.destroy', $this->permission()->id),
+                ->delete(
+                    route('permissions.destroy', $this->permission()->id),
                     [
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('success');
         }
-
     }
-
 }

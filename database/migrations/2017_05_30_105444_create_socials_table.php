@@ -14,8 +14,7 @@ class CreateSocialsTable extends Migration
 
     public function up()
     {
-        Schema::create('socials', function(Blueprint $table)
-        {
+        Schema::create('socials', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
@@ -34,5 +33,4 @@ class CreateSocialsTable extends Migration
     {
         \Schema::drop('socials');
     }
-
 }

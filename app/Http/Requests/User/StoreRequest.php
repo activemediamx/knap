@@ -53,5 +53,4 @@ class StoreRequest extends CoreRequest
 
         return $customRules;
     }
-
 }

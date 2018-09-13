@@ -15,13 +15,11 @@ class RoleObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->role = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->role = 'Seeder';
         }
-
     }
 
     public function created(Role $role)

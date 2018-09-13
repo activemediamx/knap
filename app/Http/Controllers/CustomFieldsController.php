@@ -40,7 +40,6 @@ class CustomFieldsController extends UserBaseController
                         foreach (json_decode($row->values) as $key => $value) {
                             $ul .= '<li>' . $value . '</li>';
                         }
-
                     }
 
                     $ul .= '</ul>';
@@ -143,5 +142,4 @@ class CustomFieldsController extends UserBaseController
         \DB::table('custom_fields')->delete($id);
         return Reply::success('messages.deleteSuccess');
     }
-
 }

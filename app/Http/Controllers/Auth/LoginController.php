@@ -29,7 +29,7 @@ class LoginController extends UserBaseController
     {
         $this->pageTitle = trans('core.login');
         // If a user is already logged in, redirect to dashboard Page
-        if(\Auth::check()) {
+        if (\Auth::check()) {
             return \Redirect::route('dashboard.index');
         }
 
@@ -54,7 +54,6 @@ class LoginController extends UserBaseController
         if (\Auth::attempt($credentials, $remember)) {
             // User login success
             return Reply::redirect(route('dashboard.index'), 'messages.loginSuccess');
-
         }
 
         // Login Failed
@@ -98,9 +97,7 @@ class LoginController extends UserBaseController
             \Auth::login($userData);
 
             return Redirect::route('dashboard.index');
-        }
-        else {
-
+        } else {
             // User found
             \DB::beginTransaction();
 
@@ -159,14 +156,13 @@ class LoginController extends UserBaseController
         $user->save();
 
         // To add custom fields data
-        if($request->get('custom_fields_data')){
+        if ($request->get('custom_fields_data')) {
             $user->updateCustomFieldData($request->get('custom_fields_data'));
         }
 
         \DB::commit();
 
-        if($this->global->email_notification == 1)
-        {
+        if ($this->global->email_notification == 1) {
             $emailInfo = [
                 'to'     => $user->email,
                 'toName' => $user->name,
@@ -188,7 +184,7 @@ class LoginController extends UserBaseController
     /**
      * @return \Illuminate\Contracts\View\View
      */
-    public function getReset ()
+    public function getReset()
     {
         $this->pageTitle = trans('core.resetPassword');
         return \View::make($this->global->theme_folder.'.forget', $this->data);
@@ -204,8 +200,7 @@ class LoginController extends UserBaseController
         $user->reset_token = $passwordResetCode;
         $user->save();
 
-        if($this->global->email_notification == 1)
-        {
+        if ($this->global->email_notification == 1) {
             $emailInfo = [
                 'to'     => $user->email,
                 'toName' => $user->name,
@@ -247,8 +242,7 @@ class LoginController extends UserBaseController
         $user->password = Hash::make($request->password);
         $user->save();
 
-        if($this->global->email_notification == 1)
-        {
+        if ($this->global->email_notification == 1) {
             $emailInfo = [
                 'to'     => $user->email,
                 'toName' => $user->name,
@@ -268,12 +262,11 @@ class LoginController extends UserBaseController
     }
 
      /**
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
          \Auth::logout();
          return \Redirect::route('user.login');
     }
-
 }

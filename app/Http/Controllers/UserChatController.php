@@ -24,8 +24,8 @@ use Yajra\Datatables\Facades\Datatables;
 class UserChatController extends UserBaseController
 {
      /**
-	 * UserController constructor.
-	 */
+     * UserController constructor.
+     */
 
     public function __construct()
     {
@@ -45,18 +45,15 @@ class UserChatController extends UserBaseController
 
         if (\Entrust::can('message-to-other-users')) {
             $this->userList = $this->userListLatest();
-
         } else {
             $this->userList = User::where('user_type', '=', 'admin')->get();
         }
 
-        if(count($this->userList) != 0)
-        {
-            if(($userID == '' || $userID == null)){
+        if (count($this->userList) != 0) {
+            if (($userID == '' || $userID == null)) {
                 $id   = $this->userList->first()->id;
                 $name = $this->userList->first()->name;
-
-            }else{
+            } else {
                 $id = $userID;
                 $name = User::find($userID)->name;
             }
@@ -64,14 +61,13 @@ class UserChatController extends UserBaseController
 
         $this->dpData = $id;
         $this->dpName = $name;
-        $this->chatDetails = UserChat::where(function($q) use ($id) {
+        $this->chatDetails = UserChat::where(function ($q) use ($id) {
             $q->where('from', $id)
                 ->where('to', $this->user->id)
-                ->orwhere(function($q) use ($id) {
+                ->orwhere(function ($q) use ($id) {
                     $q->where('to', $id)
                         ->Where('from', $this->user->id);
                 });
-
         })
             ->orderBy('created_at', 'asc')->get();
 
@@ -91,13 +87,10 @@ class UserChatController extends UserBaseController
     {
         $chatMessage = '';
 
-        if(count($chatDetails) > 0)
-        {
+        if (count($chatDetails) > 0) {
             UserChat::where('to', $this->user->id)->update(['message_seen' => 'yes']);
 
-            foreach($chatDetails as $chatDetail)
-            {
-
+            foreach ($chatDetails as $chatDetail) {
                 $userImage = $chatDetail->fromUser->getGravatarAttribute(250);
 
                 if ($chatDetail->from == $this->user->id) {
@@ -108,28 +101,25 @@ class UserChatController extends UserBaseController
                     $pullClass = 'right';
                     $dateClass = 'left';
 
-                    if($chatDetail->message_seen == 'yes')
-                    {
+                    if ($chatDetail->message_seen == 'yes') {
                         $seen = '<span class="message-seen">seen</span>';
-                    }
-                    else{
+                    } else {
                         $seen = '';
                     }
-                }
-                else
-                {
+                } else {
                     $userLTEClass = '';
                     $pullClass = 'left';
                     $dateClass = 'right';
                     $userEliteClass = 'even';
 
-                    $userName  = $chatDetail->fromUser->name;;
+                    $userName  = $chatDetail->fromUser->name;
+                    ;
 
                     $userClass = 'in';
                     $seen = '';
                 }
 
-                if($this->global->theme_folder == 'admin-lte'){
+                if ($this->global->theme_folder == 'admin-lte') {
                     $chatMessage .= '<div class="direct-chat-msg '.$userLTEClass.'">
                                         <div class="direct-chat-info clearfix">
                                             <span class="direct-chat-name pull-'.$pullClass.'">' . $userName . '</span>
@@ -142,8 +132,7 @@ class UserChatController extends UserBaseController
                                         </div>
                                          '.$seen.'
                                     </div>';
-                }
-                else if($this->global->theme_folder == 'elite-admin'){
+                } else if ($this->global->theme_folder == 'elite-admin') {
                     $chatMessage .= '<li class="'.$userEliteClass.'">
                                     <div class="chat-image"> <img alt="Female" src="'.$userImage.'"> </div>
                                     <div class="chat-body">
@@ -152,8 +141,7 @@ class UserChatController extends UserBaseController
                                             <p> ' . $chatDetail->message . ' </p> <b>' . $chatDetail->created_at->format('H:i d-m-Y') . '</b> </div>
                                     </div>
                                 </li>';
-                }
-                else{
+                } else {
                     $chatMessage .= '<li class="' . $userClass . '" id="message_'.$chatDetail->id.'">
                         <img class="avatar" alt="" src="'.$userImage.'" />
                         <div class="message">
@@ -169,9 +157,8 @@ class UserChatController extends UserBaseController
                         </div>
                     </li>';
                 }
-
             }
-        }else{
+        } else {
             $chatMessage .= '<li >
                         <div class="message">
                           No Message Found
@@ -184,7 +171,6 @@ class UserChatController extends UserBaseController
 
 
         return Reply::success('Fetching chat detail', ['chatData' => $chatMessage]);
-
     }
 
     /**
@@ -205,26 +191,22 @@ class UserChatController extends UserBaseController
 
         if (\Entrust::can('message-to-other-users')) {
             $userLists = $this->userListLatest();
-
         } else {
             $userLists = User::where('user_type', '=', 'admin')->get();
         }
 
         $users = '';
 
-        foreach($userLists as $userList)
-        {
-            if($userID == $userList->id)
-            {
+        foreach ($userLists as $userList) {
+            if ($userID == $userList->id) {
                 $userActive = 'active';
-            }
-            else{
+            } else {
                 $userActive = '';
             }
 
             $userName = "'".$userList->name."'";
 
-            if($this->global->theme_folder == 'admin-lte') {
+            if ($this->global->theme_folder == 'admin-lte') {
                 $users .= '<li id="dp_'.$userList->id.'">
                                 <a href="javascript:;" data-toggle="tooltip" title=""  onclick="knap.getChatData('.$userList->id.', '.$userName.');return false;" >
                                     <img class="contacts-list-img" src="'.$userList->getGravatarAttribute(250).'" alt="User Image" style="width:35px;height:35px;">
@@ -237,16 +219,14 @@ class UserChatController extends UserBaseController
                                     <!-- /.contacts-list-info -->
                                 </a>
                             </li>';
-
-            } else if($this->global->theme_folder == 'elite-admin'){
+            } else if ($this->global->theme_folder == 'elite-admin') {
                 $users .= '<li  onclick="knap.getChatData('.$userList->id.', '.$userName.');return false;">
                                 <a class="mt-comment" href="javascript:void(0)" id="dp_'.$userList->id.'"">
                                     <img src="'.$userList->getGravatarAttribute(250).'" alt="user-img" class="img-circle" style="height: 35px; width: 35px;">
                                      <span>'.$userList->name.'</span>
                                 </a>
                             </li>';
-            }
-            else{
+            } else {
                 $users .= '<div class="mt-comment '.$userActive.'" onclick="knap.getChatData('.$userList->id.', '.$userName.')" id="dp_'.$userList->id.'">
                             <div class="mt-comment-img">
                                 <img src="'.$userList->getGravatarAttribute(250).'" style="width:35px;height:35px;"/> </div>
@@ -258,7 +238,6 @@ class UserChatController extends UserBaseController
                             </div>
                         </div>';
             }
-
         }
 
         $indexRequestObj = new IndexRequest();
@@ -276,11 +255,9 @@ class UserChatController extends UserBaseController
 
         if (count($chatDetails) > 0) {
             foreach ($chatDetails as $chatDetail) {
-
                 if ($chatDetail->from == $this->user->id) {
                     $userName  = 'You';
                     $userClass = 'out';
-
                 } else {
                     $userName  = $chatDetail->dataProcessor->username;
                     $userClass = 'in';
@@ -320,5 +297,4 @@ class UserChatController extends UserBaseController
                         ->get();
         return $result;
     }
-
 }

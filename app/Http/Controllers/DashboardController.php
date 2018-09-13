@@ -14,8 +14,8 @@ class DashboardController extends UserBaseController
 {
 
      /**
-	 * UserDashboardController constructor.
-	 */
+     * UserDashboardController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -38,5 +38,4 @@ class DashboardController extends UserBaseController
 
         return View::make($this->global->theme_folder.'.dashboard', $this->data);
     }
-    
 }

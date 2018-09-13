@@ -8,16 +8,15 @@ use Illuminate\Support\Facades\Config;
 class CreateSettingsTable extends Migration
 {
     /**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
+     * Run the migrations.
+     *
+     * @return void
+     */
 
     public function up()
     {
 
-        Schema::create('settings', function(Blueprint $table)
-        {
+        Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email');
@@ -35,18 +34,16 @@ class CreateSettingsTable extends Migration
 
             $table->timestamps();
         });
-
     }
 
     /**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
+     * Reverse the migrations.
+     *
+     * @return void
+     */
 
     public function down()
     {
         Schema::drop('settings');
     }
-    
 }

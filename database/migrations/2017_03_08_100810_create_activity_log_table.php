@@ -27,5 +27,4 @@ class CreateActivityLogTable extends Migration
     {
         Schema::drop('activity_log');
     }
-
 }

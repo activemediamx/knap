@@ -21,29 +21,24 @@ class Permission extends EntrustPermission implements LogsActivityInterface
      */
     public function getActivityDescriptionForEvent($eventName)
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->user = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->user = 'Seeder';
         }
 
-        if ($eventName == 'created')
-        {
+        if ($eventName == 'created') {
             return $this->user.' created permission <strong>'.$this->name.'</strong> successfully';
         }
 
-        if ($eventName == 'updated')
-        {
+        if ($eventName == 'updated') {
             return $this->user.' updated permission <strong>'.$this->name.'</strong> successfully';
         }
 
-        if ($eventName == 'deleted')
-        {
+        if ($eventName == 'deleted') {
             return $this->user.' deleted permission <strong>'.$this->name.'</strong> successfully';
         }
 
         return '';
     }
-
 }
