@@ -19,7 +19,7 @@ class CheckForMaintenanceMode
     {
 
         $ip = $this->request->getClientIp();
-        $allowed = array('27.251.192.2', '27.251.192.3', '27.251.192.4');
+        $allowed = ['27.251.192.2', '27.251.192.3', '27.251.192.4'];
 
         if ($this->app->isDownForMaintenance() && !in_array($ip, $allowed)) {
                 return \Response::view($this->global->theme_folder.'.maintenance', [], 503);
