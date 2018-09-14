@@ -94,7 +94,7 @@ trait CustomFieldsTrait
             \DB::table('custom_fields')->insert($insertData);
         }
     }
-    
+
     public function updateCustomField($group)
     {
 

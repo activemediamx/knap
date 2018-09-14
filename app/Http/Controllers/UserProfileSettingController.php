@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Classes\Reply;
@@ -7,6 +6,7 @@ use App\Helpers\FileManager;
 use App\Http\Requests\User\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+
 
 class UserProfileSettingController extends UserBaseController
 {
