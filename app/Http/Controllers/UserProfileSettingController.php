@@ -6,7 +6,7 @@ use App\Helpers\FileManager;
 use App\Http\Requests\User\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use App\Traits\CustomFieldsTrait;
 
 class UserProfileSettingController extends UserBaseController
 {
@@ -14,6 +14,7 @@ class UserProfileSettingController extends UserBaseController
      /**
      * UserProfileSettingController constructor.
      */
+    use CustomFieldsTrait;
     public function __construct()
     {
         parent::__construct();
