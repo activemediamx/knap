@@ -30,23 +30,23 @@
 
                                 <div class="form-group">
                                     <label>@lang('core.mailDriver')</label>
-                                    <input name = "mailDriver" type="text" class="form-control"  value = "{{$global->mail_driver or ''}}">
+                                    <input name = "mailDriver" type="text" class="form-control"  value = "{{$global->mail_driver ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label>@lang('core.mailHost')</label>
-                                    <input name = "mailHost" type="text" class="form-control"  value = "{{$global->mail_host or ''}}">
+                                    <input name = "mailHost" type="text" class="form-control"  value = "{{$global->mail_host ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label>@lang('core.mailPort')</label>
-                                    <input name = "mailPort" type="text" class="form-control"  value = "{{$global->mail_port or ''}}">
+                                    <input name = "mailPort" type="text" class="form-control"  value = "{{$global->mail_port ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label>@lang('core.mailUsername')</label>
-                                    <input name = "mailUsername" type="text" class="form-control"  value = "{{$global->mail_username or ''}}">
+                                    <input name = "mailUsername" type="text" class="form-control"  value = "{{$global->mail_username ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label>@lang('core.mailPassword')</label>
-                                    <input name = "mailPassword" type="password" class="form-control"  value = "{{$global->mail_password or ''}}">
+                                    <input name = "mailPassword" type="password" class="form-control"  value = "{{$global->mail_password ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label>@lang('core.mailEncryption')</label>
@@ -58,7 +58,7 @@
 
                                 <input type="hidden" name="setting" value="mail">
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                                    <button type="button" class="btn btn-primary" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
 
                                 </div>
                             </div>

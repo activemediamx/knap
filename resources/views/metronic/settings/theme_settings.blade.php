@@ -619,7 +619,7 @@
 
                                     </div>
                                     <div class="form-actions noborder text-center">
-                                        <button type="button" class="btn  blue" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                                        <button type="button" class="btn  blue" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
                                     </div>
                                 </div>
                                 {!! Form::close()!!}

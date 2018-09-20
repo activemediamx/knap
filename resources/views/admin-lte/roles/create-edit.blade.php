@@ -12,21 +12,21 @@
             <label class="col-sm-2 control-label">@lang('core.name')</label>
 
             <div class="col-sm-10">
-                <input type="text" name="name" class="form-control"  placeholder="@lang('core.enterRoleName')" value="{{$role->name or ''}}">
+                <input type="text" name="name" class="form-control"  placeholder="@lang('core.enterRoleName')" value="{{$role->name ?? ''}}">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">@lang('core.displayName')</label>
             <div class="col-sm-10">
-                <input type="text" name="display_name" class="form-control" placeholder="@lang('core.enterDisplayName')" value="{{$role->display_name or ''}}">
+                <input type="text" name="display_name" class="form-control" placeholder="@lang('core.enterDisplayName')" value="{{$role->display_name ?? ''}}">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">@lang('core.description')</label>
             <div class="col-sm-10">
-                <textarea class="form-control" rows="3" name="description" placeholder="@lang('core.description')">{{$role->description or ''}}</textarea>
+                <textarea class="form-control" rows="3" name="description" placeholder="@lang('core.description')">{{$role->description ?? ''}}</textarea>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
 </div>
 
 <div class="modal-footer">
-    <button id="save" type="submit" class="btn btn-success" onclick="knap.addUpdate('roles', '{{$role->id or ''}}');return false">@lang('core.submit')</button>
+    <button id="save" type="submit" class="btn btn-success" onclick="knap.addUpdate('roles', '{{$role->id ?? ''}}');return false">@lang('core.submit')</button>
     <button class="btn default" data-dismiss="modal" aria-hidden="true">@lang('core.close')</button>
 </div>
 {{Form::close()}}

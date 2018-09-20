@@ -12,28 +12,28 @@
             <label class="col-sm-2 control-label">@lang('core.name')</label>
 
             <div class="col-sm-10">
-                <input type="text" @if(isset($permissions) && in_array($permissions->name,$permdata)) readonly @endif name="name" id="name" class="form-control"  value="{{ $permissions->name or '' }}" placeholder="@lang('core.enterPermissionName')">
+                <input type="text" @if(isset($permissions) && in_array($permissions->name,$permdata)) readonly @endif name="name" id="name" class="form-control"  value="{{ $permissions->name ?? '' }}" placeholder="@lang('core.enterPermissionName')">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">@lang('core.displayName')</label>
             <div class="col-sm-10">
-                <input type="text" name="display_name" class="form-control" placeholder="@lang('core.displayName')" value="{{$permissions->display_name or ''}}">
+                <input type="text" name="display_name" class="form-control" placeholder="@lang('core.displayName')" value="{{$permissions->display_name ?? ''}}">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">@lang('core.description')</label>
             <div class="col-sm-10">
-                <textarea class="form-control" rows="3" name="description" placeholder="@lang('core.description')">{{$permissions->description or ''}}</textarea>
+                <textarea class="form-control" rows="3" name="description" placeholder="@lang('core.description')">{{$permissions->description ?? ''}}</textarea>
             </div>
         </div>
 
     </div>
 </div>
 <div class="modal-footer">
-    <button id="save" type="submit" class="btn btn-success" onclick="knap.addUpdate('permissions', '{{$permissions->id or ''}}');return false">@lang('core.submit')</button>
+    <button id="save" type="submit" class="btn btn-success" onclick="knap.addUpdate('permissions', '{{$permissions->id ?? ''}}');return false">@lang('core.submit')</button>
     <button class="btn default" data-dismiss="modal" aria-hidden="true">@lang('core.close')</button>
 </div>
 {{Form::close()}}

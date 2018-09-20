@@ -520,7 +520,7 @@
                 </div>
 
                 <div class="form-group text-center">
-                    <button type="button" class="btn btn-custom waves-effect waves-light m-r-10" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                    <button type="button" class="btn btn-custom waves-effect waves-light m-r-10" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
                 </div>
             </div>
             {!! Form::close()!!}

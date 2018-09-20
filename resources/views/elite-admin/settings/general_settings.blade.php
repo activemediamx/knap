@@ -29,17 +29,17 @@
             <div class="form-body">
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('menu.siteName')</label>
-                    <input name = "site_name" id="site_name" type="text" class="form-control"  value = "{{$global->site_name or ''}}"/>
+                    <input name = "site_name" id="site_name" type="text" class="form-control"  value = "{{$global->site_name ?? ''}}"/>
 
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.name')</label>
-                    <input name = "name" id="name" type="text" class="form-control"  value = "{{$global->name or ''}}"/>
+                    <input name = "name" id="name" type="text" class="form-control"  value = "{{$global->name ?? ''}}"/>
 
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.email')</label>
-                    <input name = "email" id="email" type="email" class="form-control"  value = "{{$global->email or ''}}"/>
+                    <input name = "email" id="email" type="email" class="form-control"  value = "{{$global->email ?? ''}}"/>
 
                 </div>
 
@@ -72,7 +72,7 @@
                         <span class="label label-danger">@lang('core.note')!</span> @lang('messages.imagePreviewNote') </div>
                 </div>
                 <div class="form-actions noborder">
-                    <button type="button" class="btn btn-custom" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                    <button type="button" class="btn btn-custom" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
                 </div>
             </div>
             {!! Form::close()!!}

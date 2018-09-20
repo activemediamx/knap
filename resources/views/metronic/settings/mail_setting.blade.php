@@ -35,7 +35,7 @@
                                     <div class="form-group form-md-line-input">
                                         <label class="control-label col-md-3">@lang('core.mailDriver')</label>
                                         <div class="col-md-9">
-                                            <input name = "mailDriver" type="text" class="form-control"  value = "{{$global->mail_driver or ''}}">
+                                            <input name = "mailDriver" type="text" class="form-control"  value = "{{$global->mail_driver ?? ''}}">
                                             <div class="form-control-focus"> </div>
                                             <span class="help-block"></span>
                                         </div>
@@ -43,7 +43,7 @@
                                     <div class="form-group form-md-line-input">
                                         <label class="control-label col-md-3">@lang('core.mailHost')</label>
                                         <div class="col-md-9">
-                                            <input name = "mailHost" type="text" class="form-control"  value = "{{$global->mail_host or ''}}">
+                                            <input name = "mailHost" type="text" class="form-control"  value = "{{$global->mail_host ?? ''}}">
                                             <div class="form-control-focus"> </div>
                                             <span class="help-block"></span>
                                         </div>
@@ -51,7 +51,7 @@
                                     <div class="form-group form-md-line-input">
                                         <label class="control-label col-md-3">@lang('core.mailPort')</label>
                                         <div class="col-md-9">
-                                            <input name = "mailPort" type="text" class="form-control"  value = "{{$global->mail_port or ''}}">
+                                            <input name = "mailPort" type="text" class="form-control"  value = "{{$global->mail_port ?? ''}}">
                                             <div class="form-control-focus"> </div>
                                             <span class="help-block"></span>
                                         </div>
@@ -59,7 +59,7 @@
                                     <div class="form-group form-md-line-input">
                                         <label class="control-label col-md-3">@lang('core.mailUsername')</label>
                                         <div class="col-md-9">
-                                            <input name = "mailUsername" type="text" class="form-control"  value = "{{$global->mail_username or ''}}">
+                                            <input name = "mailUsername" type="text" class="form-control"  value = "{{$global->mail_username ?? ''}}">
                                             <div class="form-control-focus"> </div>
                                             <span class="help-block"></span>
                                         </div>
@@ -67,7 +67,7 @@
                                     <div class="form-group form-md-line-input">
                                         <label class="control-label col-md-3">@lang('core.mailPassword')</label>
                                         <div class="col-md-9">
-                                            <input name = "mailPassword" type="password" class="form-control"  value = "{{$global->mail_password or ''}}">
+                                            <input name = "mailPassword" type="password" class="form-control"  value = "{{$global->mail_password ?? ''}}">
                                             <div class="form-control-focus"> </div>
                                             <span class="help-block"></span>
                                         </div>
@@ -84,7 +84,7 @@
                                     </div>
                                     <input type="hidden" name="setting" value="mail">
                                     <div class="form-actions noborder">
-                                        <button type="button" class="btn  blue" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                                        <button type="button" class="btn  blue" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
 
                                     </div>
                                 </div>

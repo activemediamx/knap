@@ -22,7 +22,7 @@
 </div>
 <input type="hidden" name="id" value="{{$user->id}}">
 <div class="modal-footer">
-    <button id="save" type="submit" class="btn btn-custom" onclick="knap.assignRole({{$user->id or ''}});return false">@lang('core.submit')</button>
+    <button id="save" type="submit" class="btn btn-custom" onclick="knap.assignRole({{$user->id ?? ''}});return false">@lang('core.submit')</button>
     <button class="btn btn-default btn-outline" data-dismiss="modal" aria-hidden="true">@lang('core.close')</button>
 </div>
 {{Form::close()}}
