@@ -23,15 +23,15 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>@lang('menu.siteName')</label>
-                                    <input name = "site_name" type="text" class="form-control"  value="{{$global->site_name or ''}}">
+                                    <input name = "site_name" type="text" class="form-control"  value="{{$global->site_name ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label>@lang('core.name')</label>
-                                    <input name = "name" type="text" class="form-control"  value="{{$global->name or ''}}">
+                                    <input name = "name" type="text" class="form-control"  value="{{$global->name ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label>@lang('core.email')</label>
-                                    <input name = "email" type="email" class="form-control"  value="{{$global->email or ''}}">
+                                    <input name = "email" type="email" class="form-control"  value="{{$global->email ?? ''}}">
                                 </div>
 
                                 <div class="form-group">
@@ -64,7 +64,7 @@
 
                                 <input type="hidden" name="setting" value="general">
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                                    <button type="button" class="btn btn-primary" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
 
                                 </div>
                             </div>

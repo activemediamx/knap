@@ -31,7 +31,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.facebookClientId')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="facebook_client_id" id="facebook_client_id" class="form-control"   value = "{{$global->facebook_client_id or ''}}">
+                                                <input type="text" name="facebook_client_id" id="facebook_client_id" class="form-control"   value = "{{$global->facebook_client_id ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -39,7 +39,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.facebookClientSecret')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="facebook_client_secret" id="facebook_client_secret" class="form-control"   value = "{{$global->facebook_client_secret or ''}}">
+                                                <input type="text" name="facebook_client_secret" id="facebook_client_secret" class="form-control"   value = "{{$global->facebook_client_secret ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -49,7 +49,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.googleClientId')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="google_client_id" id="google_client_id" class="form-control"   value = "{{$global->google_client_id or ''}}">
+                                                <input type="text" name="google_client_id" id="google_client_id" class="form-control"   value = "{{$global->google_client_id ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -57,7 +57,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.googleClientSecret')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="google_client_secret" id="google_client_secret" class="form-control"   value = "{{$global->google_client_secret or ''}}">
+                                                <input type="text" name="google_client_secret" id="google_client_secret" class="form-control"   value = "{{$global->google_client_secret ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -67,7 +67,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.twitterClientId')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="twitter_client_id" id="twitter_client_id" class="form-control"   value = "{{$global->twitter_client_id or ''}}">
+                                                <input type="text" name="twitter_client_id" id="twitter_client_id" class="form-control"   value = "{{$global->twitter_client_id ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -75,7 +75,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.twitterClientSecret')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="twitter_client_secret" id="twitter_client_secret" class="form-control"   value = "{{$global->twitter_client_secret or ''}}">
+                                                <input type="text" name="twitter_client_secret" id="twitter_client_secret" class="form-control"   value = "{{$global->twitter_client_secret ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -85,7 +85,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.recaptchaPublicKey')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="recaptcha_public_key" id="recaptch_public_key" class="form-control"   value = "{{$global->recaptcha_public_key or ''}}">
+                                                <input type="text" name="recaptcha_public_key" id="recaptch_public_key" class="form-control"   value = "{{$global->recaptcha_public_key ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -93,7 +93,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-sm-2 control-label" for="name">@lang('core.recaptchaPrivateKey')</label>
                                             <div class="col-md-6">
-                                                <input type="text" name="recaptcha_private_key" id="recaptcha_private_key" class="form-control"   value = "{{$global->recaptcha_private_key or ''}}">
+                                                <input type="text" name="recaptcha_private_key" id="recaptcha_private_key" class="form-control"   value = "{{$global->recaptcha_private_key ?? ''}}">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block"></span>
                                             </div>
@@ -101,7 +101,7 @@
                                         
                                         <input type="hidden" name="setting" value="social">
                                         <div class="form-actions noborder">
-                                            <button type="button" class="btn  blue" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                                            <button type="button" class="btn  blue" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
 
                                         </div>
                                     </div>

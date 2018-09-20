@@ -100,14 +100,14 @@
                     <label  class="control-label">{{$field->label}}</label>
 
                         @if( $field->type == 'text')
-                            <input type="text" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->name}}" value="{{$editUser->custom_fields_data['field_'.$field->id] or ''}}">
+                            <input type="text" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->name}}" value="{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}">
                         @elseif($field->type == 'password')
-                            <input type="password" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->name}}" value="{{$editUser->custom_fields_data['field_'.$field->id] or ''}}">
+                            <input type="password" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->name}}" value="{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}">
                         @elseif($field->type == 'number')
-                            <input type="number" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->name}}" value="{{$editUser->custom_fields_data['field_'.$field->id] or ''}}">
+                            <input type="number" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->name}}" value="{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}">
 
                         @elseif($field->type == 'textarea')
-                            <textarea name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" id="{{$field->name}}" cols="3" placeholder="{{ucwords($field->name)}}">{{$editUser->custom_fields_data['field_'.$field->id] or ''}}</textarea>
+                            <textarea name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" id="{{$field->name}}" cols="3" placeholder="{{ucwords($field->name)}}">{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}</textarea>
 
                         @elseif($field->type == 'radio')
                             <div class="md-radio-list">

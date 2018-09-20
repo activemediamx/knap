@@ -72,7 +72,7 @@
 
                                 <input type="hidden" name="setting" value="settings">
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                                    <button type="button" class="btn btn-primary" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
 
                                 </div>
                             </div>
