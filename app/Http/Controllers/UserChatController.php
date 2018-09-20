@@ -289,11 +289,12 @@ class UserChatController extends UserBaseController
     public function userListLatest()
     {
         $result = User::select('users.id', 'users.name', 'users.email', 'users.avatar', 'users.user_type')
-                        ->where('user_type', 'user')
+                        ->where('user_type', '=', '"user"')
+                        ->where('users.id', '!=', $this->user->id)
                         ->leftJoin(DB::raw('(SELECT * FROM users_chat ORDER BY users_chat.created_at DESC) b'), 'b.to', '=', 'users.id')
                         ->orderBy('b.created_at', 'desc')
                         ->groupBy('users.id')
-                        ->where('users.id', '!=', $this->user->id)
+                        ->groupBy('b.created_at')
                         ->get();
         return $result;
     }

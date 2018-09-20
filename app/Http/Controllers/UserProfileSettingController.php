@@ -6,7 +6,6 @@ use App\Helpers\FileManager;
 use App\Http\Requests\User\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Traits\CustomFieldsTrait;
 
 class UserProfileSettingController extends UserBaseController
 {
@@ -14,7 +13,7 @@ class UserProfileSettingController extends UserBaseController
      /**
      * UserProfileSettingController constructor.
      */
-    use CustomFieldsTrait;
+
     public function __construct()
     {
         parent::__construct();
@@ -36,7 +35,7 @@ class UserProfileSettingController extends UserBaseController
 
     public function editProfile()
     {
-        $this->editUser = User::find($this->user)->withCustomFields();
+        $this->editUser = User::find($this->user->id)->withCustomFields();
         return \View::make($this->global->theme_folder.'.profile.edit', $this->data);
     }
 
