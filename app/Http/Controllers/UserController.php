@@ -116,7 +116,6 @@ class UserController extends UserBaseController
         $this->icon = 'plus';
         $user = new User();
         $this->fields = $user->getCustomFieldGroupsWithFields()->fields;
-
         return \View::make($this->global->theme_folder.'.users.create-edit', $this->data);
     }
 
