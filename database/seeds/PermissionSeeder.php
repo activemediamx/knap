@@ -73,13 +73,12 @@ class PermissionSeeder extends Seeder
         $roles = \App\Role::all();
         $users = User::all();
 
-        foreach($users as $user) {
-            if($user->user_type == 'admin') {
+        foreach ($users as $user) {
+            if ($user->user_type == 'admin') {
                 DB::table('role_user')->insert([
                     ['user_id' => $user->id, 'role_id' => 1],
                 ]);
-            }
-            else {
+            } else {
                 DB::table('role_user')->insert([
                     ['user_id' => $user->id, 'role_id' => $roles->random()->id],
                 ]);
@@ -88,7 +87,7 @@ class PermissionSeeder extends Seeder
 
         $permissions = \App\Permission::all();
 
-        foreach($permissions as $permission) {
+        foreach ($permissions as $permission) {
             DB::table('permission_role')->insert([
                 ['permission_id' => $permission->id, 'role_id' => 1],
             ]);
@@ -124,5 +123,4 @@ class PermissionSeeder extends Seeder
             ]);
         }
     }
-
 }

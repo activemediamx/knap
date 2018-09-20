@@ -23,8 +23,8 @@ class EmailTemplateTableSeeder extends Seeder
         \DB::beginTransaction();
         \DB::table('email_templates')->delete();
 
-        \DB::table('email_templates')->insert(array(
-            0 => array(
+        \DB::table('email_templates')->insert([
+            0 => [
                 'email_id'   => 'FORGET_PASSWORD',
                 'subject'    => 'Reset Password',
                 'body'       => 'Dear ##USERNAME##,
@@ -35,8 +35,8 @@ A request to reset your Admin password has been made. If you did not make this r
 If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us 
 ',
                 'variables'  => '["##USERNAME##", "##URL##"]'
-            ),
-            1 => array(
+            ],
+            1 => [
                 'email_id'   => 'RESET_SUCCESS',
                 'subject'    => 'Reset success',
                 'body'       => 'Dear ##USERNAME##,
@@ -45,8 +45,8 @@ You have successfully reset yours password. Please click the below link to login
 If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us
 ',
                 'variables'  => '["##USERNAME##"]'
-            ),
-            2 => array(
+            ],
+            2 => [
                 'email_id'   => 'USER_REGISTRATION',
                 'subject'    => 'Register success',
                 'body'       => 'Dear ##USERNAME##,
@@ -55,11 +55,10 @@ Thank you for registration. Please click the below link to login
 If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us 
 ',
                 'variables'  => '["##USERNAME##","##URL##"]',
-            ),
+            ],
 
 
-        ));
+        ]);
         \DB::commit();
     }
-
 }

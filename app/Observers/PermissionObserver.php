@@ -13,13 +13,11 @@ class PermissionObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->permission = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->permission = 'Seeder';
         }
-
     }
 
     public function created(Permission $permission)

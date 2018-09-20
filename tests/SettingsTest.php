@@ -41,7 +41,5 @@ class SettingsTest extends TestCase
 
     public function testSettingEdit()
     {
-
     }
-
 }

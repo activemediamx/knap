@@ -23,8 +23,8 @@ use Yajra\Datatables\Facades\Datatables;
 class SessionController extends UserBaseController
 {
      /**
-	 * UserController constructor.
-	 */
+     * UserController constructor.
+     */
 
     public function __construct()
     {
@@ -41,8 +41,8 @@ class SessionController extends UserBaseController
     }
 
      /**
-	 * @return mixed
-	 */
+     * @return mixed
+     */
     public function getSessions()
     {
         $sessions = Session::select('sessions.id as session_id', 'users.name as name', 'ip_address', 'user_agent', 'last_activity')
@@ -53,13 +53,12 @@ class SessionController extends UserBaseController
 
             ->addColumn(
                 'action',
-                function($row) {
+                function ($row) {
                     // Edit Button
                     $class = $this->global->theme_folder == 'admin-lte' ? 'bg-' : '';
                      // Delete Button
                     $msg = trans('messages.deleteConfirmSession');
                     return '<a style="margin: 1px;" href="javascript:;" onclick="knap.deleteAlert(\'sessions\',\''.addslashes($msg).'\',\''.$row->session_id.'\')"  class="btn btn-sm btn-danger '.$class.'red"><i class="fa fa-trash"></i> Delete</a>';
-
                 }
             )
             ->editColumn(
@@ -70,7 +69,6 @@ class SessionController extends UserBaseController
             )
             ->make(true);
         return $data;
-
     }
 
     /**
@@ -82,5 +80,4 @@ class SessionController extends UserBaseController
         Session::where('id', $id)->delete();
         return Reply::success('messages.deleteSuccess');
     }
-
 }

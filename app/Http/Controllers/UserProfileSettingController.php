@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Classes\Reply;
@@ -12,8 +11,9 @@ class UserProfileSettingController extends UserBaseController
 {
 
      /**
-	 * UserProfileSettingController constructor.
-	 */
+     * UserProfileSettingController constructor.
+     */
+
     public function __construct()
     {
         parent::__construct();
@@ -23,9 +23,9 @@ class UserProfileSettingController extends UserBaseController
     }
 
      /**
-	 * @param $id
-	 * @return \Illuminate\Contracts\View\View
-	 */
+     * @param $id
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         $this->user  = User::find($id);
@@ -35,7 +35,7 @@ class UserProfileSettingController extends UserBaseController
 
     public function editProfile()
     {
-        $this->editUser = User::find($this->user)->withCustomFields();
+        $this->editUser = User::find($this->user->id)->withCustomFields();
         return \View::make($this->global->theme_folder.'.profile.edit', $this->data);
     }
 
@@ -51,21 +51,19 @@ class UserProfileSettingController extends UserBaseController
         $user = $this->user;
         $image = [];
 
-        if($id == $user->id) {
-            if($request->type == 'personalInfo') {
+        if ($id == $user->id) {
+            if ($request->type == 'personalInfo') {
                 $user->name   = $request->get('name');
                 $user->email  = $request->get('email');
                 $user->gender = $request->get('gender');
                 $user->dob    = $request->get('dob');
                 $user->save();
 
-                if($request->get('custom_fields_data')){
+                if ($request->get('custom_fields_data')) {
                     // To add custom fields data
                     $user->updateCustomFieldData($request->get('custom_fields_data'));
                 }
-
             } elseif ($request->type == 'avatar') {
-
                 if ($request->image) {
                     $x = floor($request->xCoordOne);
                     $y = floor($request->yCoordOne);
@@ -79,23 +77,17 @@ class UserProfileSettingController extends UserBaseController
                     $user->avatar = $fileName;
                     $user->save();
                     $image = ['imageName' => $user->avatar];
-
                 }
-
             } elseif ($request->type == 'password') {
-                if($request->password){
+                if ($request->password) {
                     $user->password = Hash::make($request->password);
                     $user->save();
                 }
             }
-
-
         }
 
 
         \DB::commit();
         return Reply::success('messages.updateSuccess', $image);
-
     }
-
 }

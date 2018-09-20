@@ -39,5 +39,4 @@ class UserChat extends \Eloquent
     {
         return $this->belongsTo(User::class, 'to');
     }
-
 }

@@ -13,8 +13,8 @@ class ActivityLogController extends UserBaseController
 {
 
      /**
-	 * UserController constructor.
-	 */
+     * UserController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -38,18 +38,17 @@ class ActivityLogController extends UserBaseController
     public function activityLog(IndexRequest $request)
     {
         $activities = Activity::select('id', 'text', 'created_at')
-	        ->latest()->limit(100)->get();
+            ->latest()->limit(100)->get();
 
         $data = Datatables::of($activities)
 
-	        ->editColumn('created_at',
-                function ($row)
-		        {
+            ->editColumn(
+                'created_at',
+                function ($row) {
                     return Carbon::parse($row->created_at)->toDayDateTimeString();
                 }
-	        )
-	        ->make(true);
+            )
+            ->make(true);
         return $data;
     }
-
 }

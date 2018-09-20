@@ -53,26 +53,22 @@ class User extends Authenticatable implements LogsActivityInterface
         }
 
         return trim($str);
-
     }
 
     public static function getCount($status = null)
     {
-        if($status == null){
+        if ($status == null) {
             return User::count();
-
-        }
-        else{
+        } else {
             return User::where('status', $status)->count();
         }
     }
 
-    public function getGravatarAttribute($size= 250, $d = 'mm')
+    public function getGravatarAttribute($size = 250, $d = 'mm')
     {
-        if($this->avatar === 'default.png'){
-            $url = 'https://www.gravatar.com/avatar/' . md5( strtolower( trim( $this->email ) ) ) . '?d='.$d.'&s='. $size;
-
-        }else{
+        if ($this->avatar === 'default.png') {
+            $url = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?d='.$d.'&s='. $size;
+        } else {
             $url = asset('avatar/'.$this->avatar);
         }
 
@@ -94,29 +90,24 @@ class User extends Authenticatable implements LogsActivityInterface
      */
     public function getActivityDescriptionForEvent($eventName)
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->user = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->user = 'Seeder';
         }
 
-        if ($eventName == 'created')
-        {
+        if ($eventName == 'created') {
             return $this->user.' created user <strong>'.$this->name.'</strong> successfully';
         }
 
-        if ($eventName == 'updated')
-        {
+        if ($eventName == 'updated') {
             return $this->user.' updated user <strong>'.$this->name.'</strong> successfully';
         }
 
-        if ($eventName == 'deleted')
-        {
+        if ($eventName == 'deleted') {
             return $this->user.' deleted user <strong>'.$this->name.'</strong> successfully';
         }
 
         return '';
     }
-
 }

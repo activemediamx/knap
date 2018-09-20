@@ -24,25 +24,20 @@ class ProfileUpdateRequest extends CoreRequest
      */
     public function rules()
     {
-        if($this->get('type') == 'personalInfo') {
+        if ($this->get('type') == 'personalInfo') {
             return [
                 'email' => 'required|unique:users,email,'.$this->route('profile'),
                 'name'  => 'required',
             ];
-
         } elseif ($this->get('type') == 'avatar') {
             return [
 
             ];
-
         } elseif ($this->get('type') == 'password') {
             return [
                 'password' => 'required|confirmed',
                 'password_confirmation' => 'required',
             ];
         }
-
-
     }
-
 }

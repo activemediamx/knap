@@ -20,11 +20,9 @@ class StoreRequest extends FormRequest
 
         if ($user->can('message-to-other-users')) {
             return true;
-
         } else {
-            if($user->user_type == 'user' && $to->user_type == 'admin') {
+            if ($user->user_type == 'user' && $to->user_type == 'admin') {
                 return true;
-
             } else {
                 return false;
             }
@@ -42,5 +40,4 @@ class StoreRequest extends FormRequest
             'message' => 'required'
         ];
     }
-
 }

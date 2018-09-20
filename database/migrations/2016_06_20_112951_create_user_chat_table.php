@@ -17,7 +17,7 @@ class CreateUserChatTable extends Migration
     */
     public function up()
     {
-        Schema::create('users_chat', function(Blueprint $table){
+        Schema::create('users_chat', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('admin_id')->unsigned();
             $table->foreign('admin_id')->references('id')->on('users')
@@ -36,10 +36,9 @@ class CreateUserChatTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('users', function($table){
+        Schema::table('users', function ($table) {
             $table->enum('user_type', ['admin','user'])->default('user')->after('gender');
         });
-
     }
 
     /**
@@ -50,9 +49,8 @@ class CreateUserChatTable extends Migration
     public function down()
     {
         Schema::drop('users_chat');
-        Schema::table('users', function($table){
-	           $table->dropColumn('user_type');
+        Schema::table('users', function ($table) {
+               $table->dropColumn('user_type');
         });
     }
-
 }

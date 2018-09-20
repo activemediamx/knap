@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -35,11 +35,11 @@ return array(
      *        'validation',
      *    )
      */
-    'exclude_groups' => array(),
+    'exclude_groups' => [],
 
     /**
      * Export translations with keys output alphabetically.
      */
     'sort_keys '     => false,
 
-);
+];

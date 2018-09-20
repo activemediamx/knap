@@ -20,7 +20,6 @@ Route::group(['namespace' => 'Auth', 'middleware' => 'web'], function () {
     // Social Auth
     Route::get('/redirect/{provider}', ['uses' => 'LoginController@redirect', 'as' => 'social.login']);
     Route::get('/callback/{provider}', ['uses' => 'LoginController@callback']);
-
 });
 
 
@@ -90,5 +89,4 @@ Route::group(['middleware' => ['auth.user', 'web'], 'prefix' => ''], function ()
 
 // This is added for the purpose of translation
 Route::group(['middleware' => ['auth.user', 'web'], 'prefix' => 'translations'], function () {
-
 });

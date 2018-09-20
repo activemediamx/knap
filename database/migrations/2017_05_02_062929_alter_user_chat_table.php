@@ -16,7 +16,5 @@ class AlterUserChatTable extends Migration
 
     public function down()
     {
-
     }
-
 }

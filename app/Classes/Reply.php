@@ -26,7 +26,7 @@ class Reply
             $response['message'] = Reply::getTranslated($messageOrData);
         }
 
-        if (is_array($data)){
+        if (is_array($data)) {
             $response = array_merge($data, $response);
         }
 
@@ -82,8 +82,7 @@ class Reply
                 'action' => 'redirect',
                 'url' => $url
             ];
-        }
-        else {
+        } else {
             return [
                 'status' => 'success',
                 'action' => 'redirect',
@@ -102,10 +101,8 @@ class Reply
 
         if ($trans == $message) {
             return $message;
-        }
-        else {
+        } else {
             return $trans;
         }
     }
-
 }

@@ -29,5 +29,4 @@ class UpdateUsersTable extends Migration
             $table->dropColumn('avatar');
         });
     }
-
 }

@@ -16,13 +16,11 @@ class GeneralObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->general = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->general = 'Seeder';
         }
-
     }
 
     public function updated(Setting $setting)

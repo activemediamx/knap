@@ -40,7 +40,6 @@ class CustomFieldsController extends UserBaseController
                         foreach (json_decode($row->values) as $key => $value) {
                             $ul .= '<li>' . $value . '</li>';
                         }
-
                     }
 
                     $ul .= '</ul>';
@@ -98,7 +97,7 @@ class CustomFieldsController extends UserBaseController
         \DB::beginTransaction();
         $user = new User();
         $groupID = \DB::table('custom_field_groups')
-            ->where('model', 'App\Models\User')
+            ->where('model', \App\Models\User::class)
             ->select('id')
             ->first()->id;
 
@@ -143,5 +142,4 @@ class CustomFieldsController extends UserBaseController
         \DB::table('custom_fields')->delete($id);
         return Reply::success('messages.deleteSuccess');
     }
-
 }

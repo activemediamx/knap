@@ -18,8 +18,8 @@ class RolesController extends UserBaseController
 {
 
      /**
-	 * UserRolesPermissionsController constructor.
-	 */
+     * UserRolesPermissionsController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -44,7 +44,7 @@ class RolesController extends UserBaseController
     {
         $roles = Role::select('id', 'display_name', 'description')->where('name', '<>', 'admin');
         $data = Datatables::of($roles)
-            ->editColumn('perms', function ($row){
+            ->editColumn('perms', function ($row) {
                 $ul = '<ul>';
 
                 foreach ($row->perms as $permission) {
@@ -56,7 +56,7 @@ class RolesController extends UserBaseController
             })
             ->addColumn(
                 'action',
-                function($row) {
+                function ($row) {
                     // Edit Button
                     $class = $this->global->theme_folder == 'admin-lte' ? 'bg-' : '';
                     $string = '<a style="margin: 1px;" href="javascript:;" onclick="knap.editModal(\'roles\', '.$row->id.')" class="btn btn-info margin-top-10 btn-sm  '.$class.'purple"><i class="fa fa-edit"></i> Edit</a> ';
@@ -69,13 +69,12 @@ class RolesController extends UserBaseController
             ->removeColumn('id')
             ->make(true);
         return $data;
-
     }
 
     /**
-	 * Show the form for creating a new resource.
-	 *
-	 */
+     * Show the form for creating a new resource.
+     *
+     */
     public function create()
     {
         $this->icon = 'plus';
@@ -96,8 +95,7 @@ class RolesController extends UserBaseController
 
         $permissions = [];
 
-        if($request->get('permission'))
-        {
+        if ($request->get('permission')) {
             foreach ($request->get('permission') as $item) {
                 $permission = Permission::find($item);
                 $permissions[] = $permission;
@@ -110,20 +108,20 @@ class RolesController extends UserBaseController
     }
 
     /**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         // Code Goes Here
     }
 
     /**
-	 * Show the form for editing the specified resource.
-	 *
-	 */
+     * Show the form for editing the specified resource.
+     *
+     */
     public function edit($id)
     {
         $this->icon = 'pencil';
@@ -150,10 +148,10 @@ class RolesController extends UserBaseController
 
         // Check role has permission
 
-        if($request->get('permission')) {
+        if ($request->get('permission')) {
             // Attach permission to this role
             foreach ($request->get('permission') as $perm) {
-                if(in_array($perm, $perms)){
+                if (in_array($perm, $perms)) {
                     if (($key = array_search($perm, $perms)) !== false) {
                          unset($perms[$key]);
                     }
@@ -165,7 +163,7 @@ class RolesController extends UserBaseController
         }
 
         // Detach permission to roles
-        if(count($perms) > 0) {
+        if (count($perms) > 0) {
             foreach ($perms as $perm) {
                 $permission = Permission::find($perm);
                 $role->detachPermission($permission);
@@ -202,5 +200,4 @@ class RolesController extends UserBaseController
         $role->description   = $request->get('description');
         $role->save();
     }
-
 }

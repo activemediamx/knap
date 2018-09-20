@@ -32,5 +32,4 @@ class StoreRequest extends CoreRequest
             'description'  => 'required'
         ];
     }
-
 }

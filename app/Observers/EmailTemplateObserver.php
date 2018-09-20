@@ -13,13 +13,11 @@ class EmailTemplateObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->emailTemplate = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->emailTemplate = 'Seeder';
         }
-
     }
 
     public function updated(EmailTemplate $emailTemplate)

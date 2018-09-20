@@ -162,8 +162,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-	    Maatwebsite\Excel\ExcelServiceProvider::class,
-	    Zizaco\Entrust\EntrustServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
 
         /*
@@ -184,9 +184,8 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
-        \Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-	    Spatie\Activitylog\ActivitylogServiceProvider::class,
+        Spatie\Activitylog\ActivitylogServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Laravel\Dusk\DuskServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,

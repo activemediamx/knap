@@ -19,7 +19,7 @@ class RolesTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('view-role')) {
+        if ($user->can('view-role')) {
             $this->actingAs($user)
                 ->get(route('roles.index'))
                 ->assertDontSee('Whoops')
@@ -32,7 +32,7 @@ class RolesTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('edit-role')) {
+        if ($user->can('edit-role')) {
             $this->actingAs($user)
                 ->get(route('roles.edit', $this->role()->id))
                 ->assertDontSee('Whoops')
@@ -42,7 +42,8 @@ class RolesTest extends TestCase
 
             // Missing fields
             $this->actingAs($user)
-                ->put(route('roles.update', $user->id),
+                ->put(
+                    route('roles.update', $user->id),
                     [
                         'name'         => '',
                         'display_name' => '',
@@ -51,14 +52,16 @@ class RolesTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
             // Some field filled
 
             $this->actingAs($user)
-                ->put(route('roles.update', $user->id),
+                ->put(
+                    route('roles.update', $user->id),
                     [
                         'name'                                        => $this->role()->name,
                         'display_name'                                => '',
@@ -67,14 +70,16 @@ class RolesTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('fail');
 
 
             // Some field filled
             $this->actingAs($user)
-                ->put(route('roles.update', $this->role()->id),
+                ->put(
+                    route('roles.update', $this->role()->id),
                     [
                         'name'         => 'Test',
                         'display_name' => 'Test',
@@ -83,11 +88,11 @@ class RolesTest extends TestCase
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('success');
         }
-
     }
 
     // Destroy role
@@ -96,20 +101,19 @@ class RolesTest extends TestCase
     {
         $user = $this->user();
 
-        if($user->can('delete-role')) {
+        if ($user->can('delete-role')) {
             // Missing fields
             $this->actingAs($user)
-                ->delete(route('roles.destroy', $this->role()->id),
+                ->delete(
+                    route('roles.destroy', $this->role()->id),
                     [
                     ],
                     [
                         'X-Requested-With' => 'XMLHttpRequest'
-                    ])
+                    ]
+                )
                 ->assertDontSee('Whoops')
                 ->assertSee('success');
         }
-
-
     }
-
 }

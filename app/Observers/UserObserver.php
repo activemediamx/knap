@@ -16,13 +16,11 @@ class UserObserver
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             $this->user = \Auth::user()->name;
-
-        }else{
+        } else {
             $this->user = 'Seeder';
         }
-
     }
 
     public function created(User $user)

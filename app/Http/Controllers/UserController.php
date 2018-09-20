@@ -21,8 +21,8 @@ use Yajra\Datatables\Facades\Datatables;
 class UserController extends UserBaseController
 {
      /**
-	 * UserController constructor.
-	 */
+     * UserController constructor.
+     */
 
     public function __construct()
     {
@@ -40,8 +40,8 @@ class UserController extends UserBaseController
     }
 
      /**
-	 * @return mixed
-	 */
+     * @return mixed
+     */
     public function getUsersList()
     {
         $users = User::select('id', 'avatar', 'name', 'email', 'gender', 'status')->where('id', '!=', $this->user->id);
@@ -49,7 +49,7 @@ class UserController extends UserBaseController
         $data = Datatables::of($users)
             ->addColumn(
                 'roles',
-                function($row) {
+                function ($row) {
                     $ul = '<ul>';
 
                     foreach ($row->roles as $role) {
@@ -62,7 +62,7 @@ class UserController extends UserBaseController
             )
             ->addColumn(
                 'action',
-                function($row) {
+                function ($row) {
                      // Edit Button
                      $class = $this->global->theme_folder == 'admin-lte' ? 'bg-' : '';
                      $string = '<a style="margin: 1px;" href="javascript:;" onclick="knap.editModal(\'users\','.$row->id.')" class="btn btn-sm btn-info '.$class.'purple"><i class="fa fa-edit"></i> Edit</a> ';
@@ -89,7 +89,7 @@ class UserController extends UserBaseController
                     $color = ['male' => 'aqua-active label-info', 'female' => 'pink label-primary'];
 
 
-                    if($this->global->theme_folder == 'metronic' ){
+                    if ($this->global->theme_folder == 'metronic') {
                         $color = ['male' => 'blue', 'female' => 'female'];
                     }
 
@@ -103,15 +103,14 @@ class UserController extends UserBaseController
                 function ($row) {
                     return '<img height="100px" src=\''.$row->getGravatarAttribute().'\'>';
                 }
-             )
+            )
             ->make(true);
         return $data;
-
     }
 
      /**
-	 * @return \Illuminate\Contracts\View\View
-	 */
+     * @return \Illuminate\Contracts\View\View
+     */
     public function create()
     {
         $this->icon = 'plus';
@@ -134,13 +133,12 @@ class UserController extends UserBaseController
 
         \DB::commit();
         return Reply::success('messages.createSuccess');
-
     }
 
      /**
-	 * @param $id
-	 * @return \Illuminate\Contracts\View\View
-	 */
+     * @param $id
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         $this->iconEdit = 'pencil';
@@ -155,7 +153,7 @@ class UserController extends UserBaseController
      * @param $id
      * @return array
      */
-    public function update(UpdateRequest $request,$id)
+    public function update(UpdateRequest $request, $id)
     {
         \DB::beginTransaction();
 
@@ -164,7 +162,6 @@ class UserController extends UserBaseController
 
         \DB::commit();
         return Reply::success('messages.updateSuccess');
-
     }
 
     /**
@@ -191,7 +188,7 @@ class UserController extends UserBaseController
         $roles = Role::whereIn('id', $roleArray)->get();
         $user->detachRoles();
 
-        foreach($roles as $role) {
+        foreach ($roles as $role) {
             $user->attachRole($role);
         }
 
@@ -219,7 +216,7 @@ class UserController extends UserBaseController
 
         Excel::create('Users-' . date('Y-m-d'), function ($excel) use ($data) {
             $excel->sheet('Users Details', function ($sheet) use ($data) {
-           	    $sheet->fromArray($data);
+                $sheet->fromArray($data);
                 $sheet->row(1, ['ID', 'Name', 'Email', 'Date of Birth' , 'Gender', 'Status', 'User Type', 'Created_At', 'Updated_At']);
             });
         })->store('csv')->download('csv');
@@ -247,7 +244,6 @@ class UserController extends UserBaseController
             $fileName = $file->cropAndResize($request->image, $x, $y, $height, $width, $this->avatarPath);
 
             $user->avatar = $fileName;
-
         }
 
         $user->save();
@@ -256,7 +252,6 @@ class UserController extends UserBaseController
         if ($request->get('custom_fields_data')) {
             $user->updateCustomFieldData($request->get('custom_fields_data'));
         }
-
     }
 
     public function getGravatarImage($email, $size = 250, $d = 'mm')
@@ -265,5 +260,4 @@ class UserController extends UserBaseController
 
         return Reply::success('Gravatar Image Fetched', ['image' => $url]);
     }
-
 }
