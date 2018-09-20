@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Presenters\UserPresenter;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laracasts\Presenter\PresentableTrait;
 use App\Traits\CustomFieldsTrait;
@@ -16,6 +18,7 @@ class User extends Authenticatable implements LogsActivityInterface
     use PresentableTrait;
     use CustomFieldsTrait;
     use LogsActivity;
+    use Notifiable;
 
     protected $presenter = UserPresenter::class;
     /**
