@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.4 on 2018-09-20 06:53:19.
+ * Generated for Laravel 5.7.5 on 2018-09-21 06:29:06.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2328,6 +2328,278 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
+     * @method static void connection($name = null);
+     * @method static \Illuminate\Broadcasting\Broadcasters\Broadcaster channel(string $channel, callable|string  $callback)
+     * @method static mixed auth(\Illuminate\Http\Request $request)
+     * @see \Illuminate\Contracts\Broadcasting\Factory
+     */ 
+    class Broadcast {
+        
+        /**
+         * Register the routes for handling broadcast authentication and sockets.
+         *
+         * @param array|null $attributes
+         * @return void 
+         * @static 
+         */ 
+        public static function routes($attributes = null)
+        {
+            \Illuminate\Broadcasting\BroadcastManager::routes($attributes);
+        }
+        
+        /**
+         * Get the socket ID for the given request.
+         *
+         * @param \Illuminate\Http\Request|null $request
+         * @return string|null 
+         * @static 
+         */ 
+        public static function socket($request = null)
+        {
+            return \Illuminate\Broadcasting\BroadcastManager::socket($request);
+        }
+        
+        /**
+         * Begin broadcasting an event.
+         *
+         * @param mixed|null $event
+         * @return \Illuminate\Broadcasting\PendingBroadcast|void 
+         * @static 
+         */ 
+        public static function event($event = null)
+        {
+            return \Illuminate\Broadcasting\BroadcastManager::event($event);
+        }
+        
+        /**
+         * Queue the given event for broadcast.
+         *
+         * @param mixed $event
+         * @return void 
+         * @static 
+         */ 
+        public static function queue($event)
+        {
+            \Illuminate\Broadcasting\BroadcastManager::queue($event);
+        }
+        
+        /**
+         * Get a driver instance.
+         *
+         * @param string $driver
+         * @return mixed 
+         * @static 
+         */ 
+        public static function connection($driver = null)
+        {
+            return \Illuminate\Broadcasting\BroadcastManager::connection($driver);
+        }
+        
+        /**
+         * Get a driver instance.
+         *
+         * @param string|null $name
+         * @return mixed 
+         * @static 
+         */ 
+        public static function driver($name = null)
+        {
+            return \Illuminate\Broadcasting\BroadcastManager::driver($name);
+        }
+        
+        /**
+         * Get the default driver name.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getDefaultDriver()
+        {
+            return \Illuminate\Broadcasting\BroadcastManager::getDefaultDriver();
+        }
+        
+        /**
+         * Set the default driver name.
+         *
+         * @param string $name
+         * @return void 
+         * @static 
+         */ 
+        public static function setDefaultDriver($name)
+        {
+            \Illuminate\Broadcasting\BroadcastManager::setDefaultDriver($name);
+        }
+        
+        /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return $this 
+         * @static 
+         */ 
+        public static function extend($driver, $callback)
+        {
+            return \Illuminate\Broadcasting\BroadcastManager::extend($driver, $callback);
+        }
+         
+    }
+
+    /**
+     * 
+     *
+     * @method static mixed dispatch($command)
+     * @method static mixed dispatchNow($command, $handler = null)
+     * @method static bool hasCommandHandler($command)
+     * @method static bool|mixed getCommandHandler($command)
+     * @method static \Illuminate\Contracts\Bus\Dispatcher pipeThrough(array $pipes)
+     * @method static \Illuminate\Contracts\Bus\Dispatcher map(array $map)
+     * @see \Illuminate\Contracts\Bus\Dispatcher
+     */ 
+    class Bus {
+        
+        /**
+         * Dispatch a command to its appropriate handler.
+         *
+         * @param mixed $command
+         * @return mixed 
+         * @static 
+         */ 
+        public static function dispatch($command)
+        {
+            return \Illuminate\Bus\Dispatcher::dispatch($command);
+        }
+        
+        /**
+         * Dispatch a command to its appropriate handler in the current process.
+         *
+         * @param mixed $command
+         * @param mixed $handler
+         * @return mixed 
+         * @static 
+         */ 
+        public static function dispatchNow($command, $handler = null)
+        {
+            return \Illuminate\Bus\Dispatcher::dispatchNow($command, $handler);
+        }
+        
+        /**
+         * Determine if the given command has a handler.
+         *
+         * @param mixed $command
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasCommandHandler($command)
+        {
+            return \Illuminate\Bus\Dispatcher::hasCommandHandler($command);
+        }
+        
+        /**
+         * Retrieve the handler for a command.
+         *
+         * @param mixed $command
+         * @return bool|mixed 
+         * @static 
+         */ 
+        public static function getCommandHandler($command)
+        {
+            return \Illuminate\Bus\Dispatcher::getCommandHandler($command);
+        }
+        
+        /**
+         * Dispatch a command to its appropriate handler behind a queue.
+         *
+         * @param mixed $command
+         * @return mixed 
+         * @throws \RuntimeException
+         * @static 
+         */ 
+        public static function dispatchToQueue($command)
+        {
+            return \Illuminate\Bus\Dispatcher::dispatchToQueue($command);
+        }
+        
+        /**
+         * Set the pipes through which commands should be piped before dispatching.
+         *
+         * @param array $pipes
+         * @return $this 
+         * @static 
+         */ 
+        public static function pipeThrough($pipes)
+        {
+            return \Illuminate\Bus\Dispatcher::pipeThrough($pipes);
+        }
+        
+        /**
+         * Map a command to a handler.
+         *
+         * @param array $map
+         * @return $this 
+         * @static 
+         */ 
+        public static function map($map)
+        {
+            return \Illuminate\Bus\Dispatcher::map($map);
+        }
+        
+        /**
+         * Assert if a job was dispatched based on a truth-test callback.
+         *
+         * @param string $command
+         * @param callable|int|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertDispatched($command, $callback = null)
+        {
+            \Illuminate\Support\Testing\Fakes\BusFake::assertDispatched($command, $callback);
+        }
+        
+        /**
+         * Determine if a job was dispatched based on a truth-test callback.
+         *
+         * @param string $command
+         * @param callable|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNotDispatched($command, $callback = null)
+        {
+            \Illuminate\Support\Testing\Fakes\BusFake::assertNotDispatched($command, $callback);
+        }
+        
+        /**
+         * Get all of the jobs matching a truth-test callback.
+         *
+         * @param string $command
+         * @param callable|null $callback
+         * @return \Illuminate\Support\Collection 
+         * @static 
+         */ 
+        public static function dispatched($command, $callback = null)
+        {
+            return \Illuminate\Support\Testing\Fakes\BusFake::dispatched($command, $callback);
+        }
+        
+        /**
+         * Determine if there are any stored commands for a given class.
+         *
+         * @param string $command
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasDispatched($command)
+        {
+            return \Illuminate\Support\Testing\Fakes\BusFake::hasDispatched($command);
+        }
+         
+    }
+
+    /**
+     * 
+     *
      * @method static \Illuminate\Contracts\Cache\Repository  store(string|null $name = null)
      * @method static bool has(string $key)
      * @method static mixed get(string $key, mixed $default = null)
@@ -4216,11 +4488,11 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
-     * @method static void listen(string | array $events, $listener)
+     * @method static void listen(string|array $events, $listener)
      * @method static bool hasListeners(string $eventName)
-     * @method static void subscribe(object | string $subscriber)
-     * @method static array|null until(string | object $event, $payload = [])
-     * @method static array|null dispatch(string | object $event, $payload = [], bool $halt = false)
+     * @method static void subscribe(object|string $subscriber)
+     * @method static array|null until(string|object $event, $payload = [])
+     * @method static array|null dispatch(string|object $event, $payload = [], bool $halt = false)
      * @method static void push(string $event, array $payload = [])
      * @method static void flush(string $event)
      * @method static void forget(string $event)
@@ -5013,17 +5285,17 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @method static bool has(string $ability)
-     * @method static \Illuminate\Contracts\Auth\Access\Gate define(string $ability, callable | string $callback)
+     * @method static \Illuminate\Contracts\Auth\Access\Gate define(string $ability, callable|string $callback)
      * @method static \Illuminate\Contracts\Auth\Access\Gate policy(string $class, string $policy)
      * @method static \Illuminate\Contracts\Auth\Access\Gate before(callable $callback)
      * @method static \Illuminate\Contracts\Auth\Access\Gate after(callable $callback)
-     * @method static bool allows(string $ability, array | mixed $arguments = [])
-     * @method static bool denies(string $ability, array | mixed $arguments = [])
-     * @method static bool check(iterable | string $abilities, array | mixed $arguments = [])
-     * @method static bool any(iterable | string $abilities, array | mixed $arguments = [])
-     * @method static \Illuminate\Auth\Access\Response authorize(string $ability, array | mixed $arguments = [])
-     * @method static mixed getPolicyFor(object | string $class)
-     * @method static \Illuminate\Contracts\Auth\Access\Gate forUser(\Illuminate\Contracts\Auth\Authenticatable | mixed $user)
+     * @method static bool allows(string $ability, array|mixed $arguments = [])
+     * @method static bool denies(string $ability, array|mixed $arguments = [])
+     * @method static bool check(iterable|string $abilities, array|mixed $arguments = [])
+     * @method static bool any(iterable|string $abilities, array|mixed $arguments = [])
+     * @method static \Illuminate\Auth\Access\Response authorize(string $ability, array|mixed $arguments = [])
+     * @method static mixed getPolicyFor(object|string $class)
+     * @method static \Illuminate\Contracts\Auth\Access\Gate forUser(\Illuminate\Contracts\Auth\Authenticatable|mixed $user)
      * @method static array abilities()
      * @see \Illuminate\Contracts\Auth\Access\Gate
      */ 
@@ -5398,7 +5670,7 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @method static mixed trans(string $key, array $replace = [], string $locale = null)
-     * @method static string transChoice(string $key, int | array | \Countable $number, array $replace = [], string $locale = null)
+     * @method static string transChoice(string $key, int|array|\Countable $number, array $replace = [], string $locale = null)
      * @method static string getLocale()
      * @method static void setLocale(string $locale)
      * @method static string|array|null get(string $key, array $replace = [], string $locale = null, bool $fallback = true)
@@ -9329,16 +9601,16 @@ namespace Illuminate\Support\Facades {
      *
      * @method static \Illuminate\Http\Response make(string $content = '', int $status = 200, array $headers = [])
      * @method static \Illuminate\Http\Response view(string $view, array $data = [], int $status = 200, array $headers = [])
-     * @method static \Illuminate\Http\JsonResponse json(string | array $data = [], int $status = 200, array $headers = [], int $options = 0)
-     * @method static \Illuminate\Http\JsonResponse jsonp(string $callback, string | array $data = [], int $status = 200, array $headers = [], int $options = 0)
+     * @method static \Illuminate\Http\JsonResponse json(string|array $data = [], int $status = 200, array $headers = [], int $options = 0)
+     * @method static \Illuminate\Http\JsonResponse jsonp(string $callback, string|array $data = [], int $status = 200, array $headers = [], int $options = 0)
      * @method static \Symfony\Component\HttpFoundation\StreamedResponse stream(\Closure $callback, int $status = 200, array $headers = [])
-     * @method static \Symfony\Component\HttpFoundation\StreamedResponse streamDownload(\Closure $callback, string | null $name = null, array $headers = [], string | null $disposition = 'attachment')
-     * @method static \Symfony\Component\HttpFoundation\BinaryFileResponse download(\SplFileInfo | string $file, string | null $name = null, array $headers = [], string | null $disposition = 'attachment')
-     * @method static \Illuminate\Http\RedirectResponse redirectTo(string $path, int $status = 302, array $headers = [], bool | null $secure = null)
+     * @method static \Symfony\Component\HttpFoundation\StreamedResponse streamDownload(\Closure $callback, string|null $name = null, array $headers = [], string|null $disposition = 'attachment')
+     * @method static \Symfony\Component\HttpFoundation\BinaryFileResponse download(\SplFileInfo|string $file, string|null $name = null, array $headers = [], string|null $disposition = 'attachment')
+     * @method static \Illuminate\Http\RedirectResponse redirectTo(string $path, int $status = 302, array $headers = [], bool|null $secure = null)
      * @method static \Illuminate\Http\RedirectResponse redirectToRoute(string $route, array $parameters = [], int $status = 302, array $headers = [])
      * @method static \Illuminate\Http\RedirectResponse redirectToAction(string $action, array $parameters = [], int $status = 302, array $headers = [])
-     * @method static \Illuminate\Http\RedirectResponse redirectGuest(string $path, int $status = 302, array $headers = [], bool | null $secure = null)
-     * @method static \Illuminate\Http\RedirectResponse redirectToIntended(string $default = '/', int $status = 302, array $headers = [], bool | null $secure = null)
+     * @method static \Illuminate\Http\RedirectResponse redirectGuest(string $path, int $status = 302, array $headers = [], bool|null $secure = null)
+     * @method static \Illuminate\Http\RedirectResponse redirectToIntended(string $default = '/', int $status = 302, array $headers = [], bool|null $secure = null)
      * @see \Illuminate\Contracts\Routing\ResponseFactory
      */ 
     class Response {
@@ -12343,9 +12615,9 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @method static \Illuminate\Contracts\Validation\Validator make(array $data, array $rules, array $messages = [], array $customAttributes = [])
-     * @method static void extend(string $rule, \Closure | string $extension, string $message = null)
-     * @method static void extendImplicit(string $rule, \Closure | string $extension, string $message = null)
-     * @method static void replacer(string $rule, \Closure | string $replacer)
+     * @method static void extend(string $rule, \Closure|string $extension, string $message = null)
+     * @method static void extendImplicit(string $rule, \Closure|string $extension, string $message = null)
+     * @method static void replacer(string $rule, \Closure|string $replacer)
      * @see \Illuminate\Validation\Factory
      */ 
     class Validator {
@@ -12490,11 +12762,11 @@ namespace Illuminate\Support\Facades {
      * @method static bool exists(string $view)
      * @method static \Illuminate\Contracts\View\View file(string $path, array $data = [], array $mergeData = [])
      * @method static \Illuminate\Contracts\View\View make(string $view, array $data = [], array $mergeData = [])
-     * @method static mixed share(array | string $key, $value = null)
-     * @method static array composer(array | string $views, \Closure | string $callback)
-     * @method static array creator(array | string $views, \Closure | string $callback)
-     * @method static \Illuminate\Contracts\View\Factory addNamespace(string $namespace, string | array $hints)
-     * @method static \Illuminate\Contracts\View\Factory replaceNamespace(string $namespace, string | array $hints)
+     * @method static mixed share(array|string $key, $value = null)
+     * @method static array composer(array|string $views, \Closure|string $callback)
+     * @method static array creator(array|string $views, \Closure|string $callback)
+     * @method static \Illuminate\Contracts\View\Factory addNamespace(string $namespace, string|array $hints)
+     * @method static \Illuminate\Contracts\View\Factory replaceNamespace(string $namespace, string|array $hints)
      * @see \Illuminate\View\Factory
      */ 
     class View {
@@ -15980,6 +16252,10 @@ namespace  {
     class Auth extends \Illuminate\Support\Facades\Auth {}
 
     class Blade extends \Illuminate\Support\Facades\Blade {}
+
+    class Broadcast extends \Illuminate\Support\Facades\Broadcast {}
+
+    class Bus extends \Illuminate\Support\Facades\Bus {}
 
     class Cache extends \Illuminate\Support\Facades\Cache {}
 
