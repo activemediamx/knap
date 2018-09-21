@@ -15,7 +15,7 @@ class AddLocaleToSettingsTable extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('locale', 10);
+            $table->string('locale', 10)->nullable();
         });
     }
 

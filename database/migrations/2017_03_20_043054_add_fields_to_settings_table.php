@@ -15,19 +15,19 @@ class AddFieldsToSettingsTable extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->boolean('email_notification');
-            $table->boolean('recaptcha');
+            $table->boolean('email_notification')->default(1);
+            $table->boolean('recaptcha')->default(1);
             $table->boolean('remember_me')->default(1);
             $table->boolean('forget_password')->default(1);
             $table->boolean('allow_register')->default(1);
-            $table->boolean('email_confirmation');
-            $table->boolean('custom_field_on_register');
-            $table->string('mail_driver', 30);
-            $table->string('mail_host', 30);
-            $table->string('mail_port', 30);
-            $table->string('mail_username', 30);
-            $table->string('mail_password', 30);
-            $table->string('mail_encryption', 30);
+            $table->boolean('email_confirmation')->default(1);
+            $table->boolean('custom_field_on_register')->default(1);
+            $table->string('mail_driver', 30)->nullable();
+            $table->string('mail_host', 30)->nullable();
+            $table->string('mail_port', 30)->nullable();
+            $table->string('mail_username', 30)->nullable();
+            $table->string('mail_password', 30)->nullable();
+            $table->string('mail_encryption', 30)->nullable();
         });
     }
 
