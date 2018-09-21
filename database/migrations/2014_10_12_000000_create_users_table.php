@@ -16,16 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')
-                ->unique();
-            $table->string('password')
-                ->nullable();
-            $table->enum('status', ['active', 'inactive'])
-                ->default('active');
-            $table->date('dob')
-                ->nullable();
-            $table->enum('gender', ['male', 'female'])
-                ->default('male');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->date('dob')->nullable();
+            $table->enum('gender', ['male', 'female'])->default('male');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -38,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::dropIfExists('users');
     }
 }

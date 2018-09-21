@@ -26,45 +26,45 @@
             <div class="form-body">
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.facebookClientId')</label>
-                    <input name = "facebook_client_id" type="text" class="form-control"  value = "{{$global->facebook_client_id or ''}}">
+                    <input name = "facebook_client_id" type="text" class="form-control"  value = "{{$global->facebook_client_id ?? ''}}">
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.facebookClientSecret')</label>
-                    <input name = "facebook_client_secret" type="text" class="form-control"  value = "{{$global->facebook_client_secret or ''}}">
+                    <input name = "facebook_client_secret" type="text" class="form-control"  value = "{{$global->facebook_client_secret ?? ''}}">
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.googleClientId')</label>
-                    <input name = "google_client_id" type="text" class="form-control"  value = "{{$global->google_client_id or ''}}">
+                    <input name = "google_client_id" type="text" class="form-control"  value = "{{$global->google_client_id ?? ''}}">
 
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.googleClientSecret')</label>
-                    <input name = "google_client_secret" type="text" class="form-control"  value = "{{$global->google_client_secret or ''}}">
+                    <input name = "google_client_secret" type="text" class="form-control"  value = "{{$global->google_client_secret ?? ''}}">
 
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.twitterClientId')</label>
-                    <input name = "twitter_client_id" type="text" class="form-control"  value = "{{$global->twitter_client_id or ''}}">
+                    <input name = "twitter_client_id" type="text" class="form-control"  value = "{{$global->twitter_client_id ?? ''}}">
 
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.twitterClientSecret')</label>
-                    <input name = "twitter_client_secret" type="text" class="form-control"  value = "{{$global->twitter_client_secret or ''}}">
+                    <input name = "twitter_client_secret" type="text" class="form-control"  value = "{{$global->twitter_client_secret ?? ''}}">
 
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.recaptchaPublicKey')</label>
-                    <input name = "recaptcha_public_key" type="text" class="form-control"  value = "{{$global->recaptcha_public_key or ''}}">
+                    <input name = "recaptcha_public_key" type="text" class="form-control"  value = "{{$global->recaptcha_public_key ?? ''}}">
 
                 </div>
                 <div class="form-group form-md-line-input">
                     <label for="form_control_1">@lang('core.recaptchaPrivateKey')</label>
-                    <input name = "recaptcha_private_key" type="text" class="form-control"  value = "{{$global->recaptcha_private_key or ''}}">
+                    <input name = "recaptcha_private_key" type="text" class="form-control"  value = "{{$global->recaptcha_private_key ?? ''}}">
 
                 </div>
                 <input type="hidden" name="setting" value="social">
                 <div class="form-actions noborder">
-                    <button type="button" class="btn  btn-custom" onclick="knap.addUpdate('settings', '{{$global->id or ''}}');return false">@lang('core.submit')</button>
+                    <button type="button" class="btn  btn-custom" onclick="knap.addUpdate('settings', '{{$global->id ?? ''}}');return false">@lang('core.submit')</button>
                 </div>
             </div>
             {!! Form::close()!!}
