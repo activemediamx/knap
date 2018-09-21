@@ -62,7 +62,7 @@
                                                             <label class="col-sm-2 control-label" for="name">@lang('core.name')</label>
 
                                                             <div class="col-sm-10">
-                                                                <input type="text" name="name" id="name" class="form-control"  placeholder="@lang('core.name')" value="{{$editUser->name or ''}}">
+                                                                <input type="text" name="name" id="name" class="form-control"  placeholder="@lang('core.name')" value="{{$editUser->name ?? ''}}">
                                                                 <div class="form-control-focus"> </div>
                                                                 <span class="help-block"></span>
                                                             </div>
@@ -71,7 +71,7 @@
                                                         <div class="form-group form-md-line-input">
                                                             <label class="col-sm-2 control-label" for="email">@lang('core.email')</label>
                                                             <div class="col-sm-10">
-                                                                <input type="email" name="email" id="email" class="form-control" placeholder="@lang('core.email')" value="{{$editUser->email or ''}}">
+                                                                <input type="email" name="email" id="email" class="form-control" placeholder="@lang('core.email')" value="{{$editUser->email ?? ''}}">
                                                                 <div class="form-control-focus"> </div>
                                                                 <span class="help-block"></span>
                                                             </div>
@@ -99,14 +99,14 @@
                                                                 <label  class="col-sm-2 control-label">{{$field->label}}</label>
                                                                 <div class="col-sm-10">
                                                                     @if( $field->type == 'text')
-                                                                        <input type="text" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->label}}" value="{{$editUser->custom_fields_data['field_'.$field->id] or ''}}">
+                                                                        <input type="text" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->label}}" value="{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}">
                                                                     @elseif($field->type == 'password')
-                                                                        <input type="password" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->label}}" value="{{$editUser->custom_fields_data['field_'.$field->id] or ''}}">
+                                                                        <input type="password" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->label}}" value="{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}">
                                                                     @elseif($field->type == 'number')
-                                                                        <input type="number" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->label}}" value="{{$editUser->custom_fields_data['field_'.$field->id] or ''}}">
+                                                                        <input type="number" name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" placeholder="{{$field->label}}" value="{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}">
 
                                                                     @elseif($field->type == 'textarea')
-                                                                        <textarea name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" id="{{$field->name}}" cols="3">{{$editUser->custom_fields_data['field_'.$field->id] or ''}}</textarea>
+                                                                        <textarea name="custom_fields_data[{{$field->name.'_'.$field->id}}]" class="form-control" id="{{$field->name}}" cols="3">{{$editUser->custom_fields_data['field_'.$field->id] ?? ''}}</textarea>
 
                                                                     @elseif($field->type == 'radio')
                                                                         <div class="md-radio-list">
@@ -152,7 +152,7 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                    <button id="save" type="submit" class="btn  green" onclick="knap.addUpdate('profiles', '{{$editUser->id or ''}}');return false">@lang('core.submit')</button>
+                                                    <button id="save" type="submit" class="btn  green" onclick="knap.addUpdate('profiles', '{{$editUser->id ?? ''}}');return false">@lang('core.submit')</button>
                                                 </div>
                                                 {{Form::close()}}
                                             </div>

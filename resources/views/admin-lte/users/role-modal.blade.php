@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button id="save" type="submit" class="btn btn-success" onclick="knap.assignRole({{$user->id or ''}});return false">@lang('core.submit')</button>
+    <button id="save" type="submit" class="btn btn-success" onclick="knap.assignRole({{$user->id ?? ''}});return false">@lang('core.submit')</button>
     <button class="btn default" data-dismiss="modal" aria-hidden="true">@lang('core.close')</button>
 </div>
 {{Form::close()}}

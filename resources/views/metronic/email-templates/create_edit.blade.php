@@ -16,7 +16,7 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-sm-2 control-label" for="name">@lang('core.id')</label>
                     <div class="col-sm-10">
-                        <input type="text" name="id" id="id" class="form-control"  placeholder="@lang('core.id')" value="{{$editTemplate->email_id or ''}}" disabled>
+                        <input type="text" name="id" id="id" class="form-control"  placeholder="@lang('core.id')" value="{{$editTemplate->email_id ?? ''}}" disabled>
                         <span class="form-control-focus"> </span>
                         <span class=" help-block help-block-error" style="color: #e73d4a;">@lang('messages.youCantChangeId')</span>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-sm-2 control-label" for="email">@lang('core.subject')</label>
                     <div class="col-sm-10">
-                        <input type="text" name="subject" id="subject" class="form-control" placeholder="@lang('core.subject')" value="{{$editTemplate->subject or ''}}">
+                        <input type="text" name="subject" id="subject" class="form-control" placeholder="@lang('core.subject')" value="{{$editTemplate->subject ?? ''}}">
                         <div class="form-control-focus"> </div>
                         <span class="help-block"></span>
                     </div>
@@ -32,14 +32,14 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">@lang('core.body')</label>
                     <div class="col-md-10">
-                        <textarea name="body" class="form-control" rows="10" id="myEditor" placeholder="@lang('core.enterText')">{!! $editTemplate->body or '' !!} </textarea>
+                        <textarea name="body" class="form-control" rows="10" id="myEditor" placeholder="@lang('core.enterText')">{!! $editTemplate->body ?? '' !!} </textarea>
                     </div>
                 </div>
 
                 <div class="form-group form-md-line-input">
                     <label class="col-sm-2 control-label">@lang('core.variablesUsed')</label>
                     <div class="col-sm-10">
-                        {{ $emailVariables or ''}}
+                        {{ $emailVariables ?? ''}}
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
 
         <div class="modal-footer">
             <button class="btn dark " data-dismiss="modal" aria-hidden="true">@lang('core.close')</button>
-            <button id="save" type="submit" class="btn green" onclick="knap.addUpdate('email-templates', '{{$editTemplate->id or ''}}');return false">@lang('core.submit')</button>
+            <button id="save" type="submit" class="btn green" onclick="knap.addUpdate('email-templates', '{{$editTemplate->id ?? ''}}');return false">@lang('core.submit')</button>
         </div>
         {{Form::close()}}
     </div>

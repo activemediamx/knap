@@ -1,7 +1,7 @@
 <div class="portlet light bordered">
     <div class="portlet-title">
         <div class="caption font-red-sunglo">
-            <i class="icon-{{$iconEdit or $icon }} font-red-sunglo"></i>
+            <i class="icon-{{$iconEdit ?? $icon }} font-red-sunglo"></i>
             <span class="caption-subject bold uppercase">
          @if(isset($permissions->id)) @lang('menu.editField')@else @lang('menu.addField') @endif
             </span>

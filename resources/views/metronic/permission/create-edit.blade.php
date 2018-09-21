@@ -1,7 +1,7 @@
 <div class="portlet light bordered">
     <div class="portlet-title">
         <div class="caption font-red-sunglo">
-            <i class="icon-{{$iconEdit or $icon }} font-red-sunglo"></i>
+            <i class="icon-{{$iconEdit ?? $icon }} font-red-sunglo"></i>
             <span class="caption-subject bold uppercase">
          @if(isset($permissions->id)) @lang('menu.editPermission')@else @lang('menu.addPermission') @endif
             </span>
@@ -17,7 +17,7 @@
             <div class="form-group form-md-line-input">
                 <label class="col-sm-2 control-label" for="name">@lang('core.name')</label>
                 <div class="col-sm-10">
-                    <input type="text" @if(isset($permissions) && in_array($permissions->name,$permdata)) readonly @endif name="name" id="name" class="form-control"  value="{{ $permissions->name or '' }}" placeholder="@lang('core.enterPermissionName')">
+                    <input type="text" @if(isset($permissions) && in_array($permissions->name,$permdata)) readonly @endif name="name" id="name" class="form-control"  value="{{ $permissions->name ?? '' }}" placeholder="@lang('core.enterPermissionName')">
 
                     <div class="form-control-focus"> </div>
                     <span class="help-block"></span>
@@ -26,7 +26,7 @@
             <div class="form-group form-md-line-input">
                 <label class="col-sm-2 control-label" for="display_name">@lang('core.displayName')</label>
                 <div class="col-sm-10">
-                    <input type="text" id="display_name" class="form-control"  value="{{ $permissions->display_name or old('display_name') }}" name="display_name" placeholder="@lang('core.displayName')">
+                    <input type="text" id="display_name" class="form-control"  value="{{ $permissions->display_name ?? old('display_name') }}" name="display_name" placeholder="@lang('core.displayName')">
                     <div class="form-control-focus"> </div>
                     <span class="help-block"></span>
                 </div>
@@ -34,7 +34,7 @@
             <div class="form-group form-md-line-input">
                 <label class="col-sm-2 control-label" for="description">@lang('core.description')</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="description" id="description">{{ $permissions->description or old('description') }}</textarea>
+                    <textarea class="form-control" rows="3" name="description" id="description">{{ $permissions->description ?? old('description') }}</textarea>
                     <div class="form-control-focus"> </div>
                     <span class="help-block"></span>
                 </div>
@@ -44,7 +44,7 @@
 
 <div class="modal-footer">
     <button class="btn  dark " data-dismiss="modal" aria-hidden="true">@lang('core.close')</button>
-    <button id="save" type="submit" class="btn  green" onclick="knap.addUpdate('permissions', '{{$permissions->id or ''}}');return false">@lang('core.submit')</button>
+    <button id="save" type="submit" class="btn  green" onclick="knap.addUpdate('permissions', '{{$permissions->id ?? ''}}');return false">@lang('core.submit')</button>
 </div>
 {{ Form::close() }}
 </div>

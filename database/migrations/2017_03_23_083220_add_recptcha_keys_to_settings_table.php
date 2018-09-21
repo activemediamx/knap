@@ -15,8 +15,8 @@ class AddRecptchaKeysToSettingsTable extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('recaptcha_public_key');
-            $table->string('recaptcha_private_key');
+            $table->string('recaptcha_public_key')->nullable();
+            $table->string('recaptcha_private_key')->nullable();
         });
     }
 
