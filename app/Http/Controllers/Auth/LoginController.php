@@ -50,7 +50,6 @@ class LoginController extends UserBaseController
         $credentials = ['email' => $email, 'password' => $password];
         $remember    = $request->remember ? true : false;
 
-
         if (\Auth::attempt($credentials, $remember)) {
             // User login success
             return Reply::redirect(route('dashboard.index'), 'messages.loginSuccess');

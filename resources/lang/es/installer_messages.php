@@ -14,7 +14,7 @@ return [
 
     /**
      *
-     * Traducciones de la página principal.
+     * Home page translations.
      *
      */
     'welcome' => [
@@ -25,17 +25,17 @@ return [
 
     /**
      *
-     * Tranducciones de la página de requisitos.
+     * Requirements page translations.
      *
      */
     'requirements' => [
-        'title' => 'Requisitos',
+        'title' => 'Requerimientos',
     ],
 
 
     /**
      *
-     * Traducciones de la pagina de permisos.
+     * Permissions page translations.
      *
      */
     'permissions' => [
@@ -45,25 +45,75 @@ return [
 
     /**
      *
-     * Traducciones de la página de entorno.
+     * Environment page translations.
      *
      */
     'environment' => [
-        'title' => 'Configuraciones del entorno',
-        'save' => 'Guardar archivo .env',
-        'success' => 'Los cambios en tu archivo .env han sido guardados.',
-        'errors' => 'No es posible crear el archivo .env, por favor intentalo manualmente.',
+        'title' => 'Configuración del entorno',
+        'save' => 'Guardar .env',
+        'success' => 'Su archivo de configuración .env se ha guardado.',
+        'errors' => 'Imposible guardar el archivo .env, por favor escribalo manualmente.',
     ],
+
+    'install' => 'Instalar',
 
 
     /**
      *
-     * Traducciones de la página final.
+     * Final page translations.
      *
      */
     'final' => [
-        'title' => 'Finalizado.',
-        'finished' => 'La aplicación ha sido instalada con éxito!',
-        'exit' => 'Haz click aquí para salir.',
+        'title' => 'Terminado',
+        'finished' => 'La aplicacion se ha instalado de manera satisfactoria.',
+        'exit' => 'Haga click aquí para salir',
     ],
+
+    /**
+     *
+     * Update specific translations
+     *
+     */
+    'updater' => [
+        /**
+         *
+         * Shared translations.
+         *
+         */
+        'title' => 'Actualizador Laravel',
+
+        /**
+         *
+         * Welcome page translations for update feature.
+         *
+         */
+        'welcome' => [
+            'title'   => 'Bienvenido al actualizador',
+            'message' => 'Bienvenido al asistente de actualización.',
+        ],
+
+        /**
+         *
+         * Welcome page translations for update feature.
+         *
+         */
+        'overview' => [
+            'title'   => 'Visión del conjunto',
+            'message' => 'Hay una actualización.|Hay :number actualizaciones.',
+        ],
+
+        /**
+         *
+         * Final page translations.
+         *
+         */
+        'final' => [
+            'title' => 'Terminado',
+            'finished' => 'La base de datos de la aplicacion se ha actualizado satisfactoriamente.',
+            'exit' => 'Haga click aquí para salir',
+        ],
+
+    ],
+    'checkPermissionAgain' => 'Verificar nuevamente'
+
 ];

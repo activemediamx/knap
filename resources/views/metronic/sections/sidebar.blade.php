@@ -68,6 +68,8 @@
                     <!-- <span class="selected"></span> -->
                 </a>
             </li>
+
+
             @if($user->user_type=='admin')
             <li class="nav-item @if(preg_match('/session/',\Request::route()->getName())) active @endif">
                 <a href="{{ route('sessions.index') }}" class="nav-link ">
@@ -77,6 +79,7 @@
                 </a>
             </li>
             @endif
+
             @permission(['update-social-settings', 'update-general-settings', 'update-theme-settings', 'update-mail-settings', 'update-common-settings', 'manage-custom-fields' ])
                 <li class="nav-item @if(strpos(\Request::route()->getName(),'setting') || strpos(\Request::route()->getName(),'fields')) active @endif">
                     <a href="javascript:;" class="nav-link nav-toggle">

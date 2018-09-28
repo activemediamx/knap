@@ -53,6 +53,8 @@
                     <i class="fa fa-comments-o"></i> <span>@lang('menu.userChat')</span>
                 </a>
             </li>
+
+
             @if($user->user_type=='admin')
                 <li class="@if(preg_match('/session/',\Request::route()->getName())) active @endif">
                     <a href="{{ route('sessions.index') }}" class="nav-link ">
@@ -61,6 +63,11 @@
                     </a>
                 </li>
             @endif
+
+
+
+
+
             @permission(['update-social-settings', 'update-general-settings', 'update-theme-settings', 'update-mail-settings', 'update-common-settings', 'manage-custom-fields' ])
                 <li class=" @if(strpos(\Request::route()->getName(),'setting') or preg_match('/custom-fields/', \Request::route()->getName())) active @endif treeview">
                     <a href="#">

@@ -33,7 +33,7 @@ class UpdateRequest extends CoreRequest
         }
 
         $mainRules = [
-            'email' => 'required|unique:users,email,'.$this->route('user'),
+            'email' => 'required|email|unique:users,email,'.$this->route('user'),
             'name'  => 'required',
             'image' => 'image'
         ];

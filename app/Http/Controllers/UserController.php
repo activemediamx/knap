@@ -156,7 +156,7 @@ class UserController extends UserBaseController
     {
         \DB::beginTransaction();
 
-        $user         = User::find($id);
+        $user  = User::find($id);
         $this->storeAndUpdate($user, $request);
 
         \DB::commit();
